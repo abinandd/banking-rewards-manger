@@ -14,6 +14,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -37,8 +40,13 @@ public class RewardService {
         return rewardRepository.findByUserIdOrderByCreatedAtDesc(userId);
     }
 
+    public Page<Reward> getAllRewards(Pageable pageable) {
+        return rewardRepository.findAll(pageable);
+    }
+    
+    // Legacy support for frontend not yet updated to pagination
     public List<Reward> getAllRewards() {
-        return rewardRepository.findAll();
+        return rewardRepository.findAll(PageRequest.of(0, 100)).getContent();
     }
 
     public List<Reward> getRewardsByTransactionId(Long transactionId) {

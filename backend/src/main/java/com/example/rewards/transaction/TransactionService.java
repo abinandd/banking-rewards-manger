@@ -23,8 +23,12 @@ public class TransactionService {
     private final UserService userService;
     private final RewardService rewardService;
 
+    public org.springframework.data.domain.Page<Transaction> getAllTransactions(org.springframework.data.domain.Pageable pageable) {
+        return transactionRepository.findAllByOrderByCreatedAtDesc(pageable);
+    }
+
     public List<Transaction> getAllTransactions() {
-        return transactionRepository.findAllByOrderByCreatedAtDesc();
+        return transactionRepository.findAllByOrderByCreatedAtDesc(org.springframework.data.domain.PageRequest.of(0, 100)).getContent();
     }
 
     public List<Transaction> getTransactionsByUserId(Long userId) {
@@ -47,7 +51,7 @@ public class TransactionService {
         Transaction transaction = Transaction.builder()
                 .userId(userId)
                 .merchantName(merchantName)
-                .category(category.toUpperCase())
+                .category(category != null ? category.toUpperCase() : "OTHER")
                 .amount(amount)
                 .status(TransactionStatus.COMPLETED)
                 .description(description)

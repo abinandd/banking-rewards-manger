@@ -286,7 +286,7 @@ export const App: React.FC = () => {
         <main className="flex-1 max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
           {!isAdmin && currentUser && (
             <>
-              {currentTab === 'dashboard' && (
+              {(currentTab === 'dashboard' || currentTab === 'transactions') && (
                 <CustomerDashboard
                   user={currentUser}
                   wallet={wallet}
@@ -303,18 +303,6 @@ export const App: React.FC = () => {
                   user={currentUser}
                   wallet={wallet}
                   rewards={rewards}
-                />
-              )}
-
-              {currentTab === 'transactions' && (
-                <CustomerDashboard
-                  user={currentUser}
-                  wallet={wallet}
-                  transactions={transactions}
-                  rewards={rewards}
-                  onOpenCreateTxn={() => setShowCreateTxnModal(true)}
-                  onSelectTab={setCurrentTab}
-                  onSelectTxn={(t) => setSelectedTxn(t)}
                 />
               )}
 
