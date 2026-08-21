@@ -58,9 +58,6 @@ export const Sidebar: React.FC<SidebarProps> = ({
       <div>
         {/* Branding */}
         <div className="flex items-center space-x-3 mb-8 px-2 mt-2">
-          <div className="h-10 w-10 rounded-xl bg-gradient-to-tr from-emerald-500 to-teal-400 flex items-center justify-center shadow-lg shadow-emerald-500/20">
-            <Sparkles className="h-6 w-6 text-white" />
-          </div>
           <div>
             <span className="text-xl font-bold tracking-tight bg-gradient-to-r from-white via-slate-200 to-emerald-400 bg-clip-text text-transparent block">
               VaultRewards

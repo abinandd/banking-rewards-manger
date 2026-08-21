@@ -24,13 +24,22 @@ export const OffersPage: React.FC<OffersPageProps> = ({ campaigns, onOpenCreateT
 
   return (
     <div ref={containerRef} className="space-y-6">
-      <div className="gsap-fade-up">
-        <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-          Special Offers &amp; Boosters 
-        </h1>
-        <p className="text-sm text-slate-500 mt-1">
-          Active seasonal promotions and merchant boost campaigns evaluated in real-time by the Reward Engine.
-        </p>
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 gsap-fade-up">
+        <div>
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+            Special Offers &amp; Boosters
+          </h1>
+          <p className="text-sm text-slate-500 mt-1">
+            Active seasonal promotions and merchant boost campaigns evaluated in real-time by the Reward Engine.
+          </p>
+        </div>
+        <button
+          onClick={onOpenCreateTxn}
+          className="flex items-center space-x-2 px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-bold rounded-xl transition"
+        >
+          <Plus className="h-4 w-4" />
+          <span>Use Offer Now</span>
+        </button>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 gsap-fade-up">
