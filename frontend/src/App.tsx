@@ -16,7 +16,6 @@ import {
   Campaign, 
   Referral 
 } from './types';
-import { Navbar } from './components/Navbar';
 import { Sidebar } from './components/Sidebar';
 import { CustomerDashboard } from './pages/CustomerDashboard';
 import { RewardsWallet } from './pages/RewardsWallet';
@@ -250,41 +249,36 @@ export const App: React.FC = () => {
   }
 
   return (
-    <div className="h-screen overflow-hidden bg-slate-50 flex flex-col font-sans text-slate-900">
-      <Navbar
+    <div className="h-screen overflow-hidden bg-slate-50 flex font-sans text-slate-900">
+      <Sidebar
+        currentTab={currentTab}
+        onSelectTab={setCurrentTab}
+        isAdmin={isAdmin}
+        onToggleAdmin={handleToggleAdmin}
         currentUser={currentUser}
         users={users}
         onSelectUser={handleSelectUser}
-        isAdmin={isAdmin}
-        onToggleAdmin={handleToggleAdmin}
       />
 
-      {error && (
-        <div className="bg-red-50 border-l-4 border-red-500 p-4 m-4 sm:mx-6 lg:mx-8 rounded shadow-sm relative flex-shrink-0">
-          <div className="flex">
-            <div className="flex-shrink-0">
-              <AlertTriangle className="h-5 w-5 text-red-500" />
+      <div className="flex-1 flex flex-col overflow-hidden relative">
+        {error && (
+          <div className="bg-red-50 border-l-4 border-red-500 p-4 m-4 sm:mx-6 lg:mx-8 rounded shadow-sm relative flex-shrink-0 z-10">
+            <div className="flex">
+              <div className="flex-shrink-0">
+                <AlertTriangle className="h-5 w-5 text-red-500" />
+              </div>
+              <div className="ml-3">
+                <p className="text-sm text-red-700 font-medium">{error}</p>
+              </div>
+              <button
+                onClick={() => setError(null)}
+                className="absolute top-4 right-4 text-red-400 hover:text-red-600 transition"
+              >
+                ✕
+              </button>
             </div>
-            <div className="ml-3">
-              <p className="text-sm text-red-700 font-medium">{error}</p>
-            </div>
-            <button
-              onClick={() => setError(null)}
-              className="absolute top-4 right-4 text-red-400 hover:text-red-600 transition"
-            >
-              ✕
-            </button>
           </div>
-        </div>
-      )}
-
-
-      <div className="flex flex-1 overflow-hidden">
-        <Sidebar
-          currentTab={currentTab}
-          onSelectTab={setCurrentTab}
-          isAdmin={isAdmin}
-        />
+        )}
 
         <main className="flex-1 w-full max-w-7xl mx-auto p-4 sm:p-6 lg:p-8 overflow-y-auto">
           {!isAdmin && currentUser && (
