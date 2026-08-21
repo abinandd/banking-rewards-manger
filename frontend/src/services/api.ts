@@ -1,14 +1,38 @@
 import axios from 'axios';
 import { User, RewardWallet, Transaction, Reward, RewardRule, Campaign, Referral } from '../types';
 
-const API_BASE_URL = 'http://localhost:8080/api';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || (import.meta.env.PROD ? '/api' : 'http://localhost:8080/api');
 
-const api = axios.create({
+export const api = axios.create({
   baseURL: API_BASE_URL,
   headers: {
     'Content-Type': 'application/json',
   },
+  timeout: 15000,
 });
+
+// Request Interceptor: Attach dynamic Request/Correlation IDs for tracing
+api.interceptors.request.use(
+  (config) => {
+    const requestId = crypto.randomUUID ? crypto.randomUUID() : `req-${Date.now()}`;
+    config.headers['X-Correlation-Id'] = requestId;
+    return config;
+  },
+  (error) => Promise.reject(error)
+);
+
+// Response Interceptor: Provide clean error unwrapping
+api.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    const customMessage =
+      error.response?.data?.message ||
+      error.response?.data?.error ||
+      error.message ||
+      'An unexpected network or server error occurred';
+    return Promise.reject(new Error(customMessage));
+  }
+);
 
 export const UserService = {
   getUsers: () => api.get<User[]>('/users').then(res => res.data),

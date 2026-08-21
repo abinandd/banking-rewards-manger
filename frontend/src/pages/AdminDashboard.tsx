@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { 
-  BarChart3, 
+
   Users, 
   Wallet, 
   ArrowLeftRight, 
@@ -10,8 +10,8 @@ import {
   Plus, 
   Trash2, 
   Power, 
-  RotateCcw,
-  CheckCircle2
+
+
 } from 'lucide-react';
 import { 
   User, 
@@ -20,7 +20,7 @@ import {
   RewardRule, 
   Campaign, 
   Referral, 
-  RewardType 
+
 } from '../types';
 
 interface AdminDashboardProps {

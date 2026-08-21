@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Gift, Copy, Check, UserPlus, Sparkles, CheckCircle2, Clock } from 'lucide-react';
+import { Gift, Copy, Check, UserPlus, CheckCircle2, Clock } from 'lucide-react';
 import { User, Referral } from '../types';
 
 interface ReferralPageProps {

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Wallet, Award, ArrowUpRight, ArrowDownLeft, ShieldCheck, Filter, Clock, Sparkles } from 'lucide-react';
+import { Wallet, Award, ArrowUpRight, ArrowDownLeft } from 'lucide-react';
 import { RewardWallet, Reward, User } from '../types';
 
 interface RewardsWalletProps {
@@ -8,7 +8,7 @@ interface RewardsWalletProps {
   rewards: Reward[];
 }
 
-export const RewardsWallet: React.FC<RewardsWalletProps> = ({ user, wallet, rewards }) => {
+export const RewardsWallet: React.FC<RewardsWalletProps> = ({ user: _user, wallet, rewards }) => {
   const [filterType, setFilterType] = useState<string>('ALL');
 
   const filteredRewards = rewards.filter((r) => {

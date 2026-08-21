@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Award, CheckCircle2, Zap, ArrowRight, ShieldCheck, Sparkles } from 'lucide-react';
+import { Award, CheckCircle2, Zap } from 'lucide-react';
 import { User, RewardWallet } from '../types';
 
 interface TierPageProps {

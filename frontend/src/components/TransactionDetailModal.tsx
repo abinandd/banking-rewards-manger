@@ -3,14 +3,9 @@ import {
   X, 
   RotateCcw, 
   CheckCircle, 
-  Layers, 
   Receipt, 
   Sparkles, 
-  ArrowRight,
-  AlertCircle,
-  Calendar,
-  Building2,
-  Tag
+  AlertCircle
 } from 'lucide-react';
 import { Transaction, Reward, RewardRuleBreakdown } from '../types';
 
@@ -28,7 +23,6 @@ export const TransactionDetailModal: React.FC<TransactionDetailModalProps> = ({
   onRefund,
 }) => {
   const [loadingRefund, setLoadingRefund] = useState(false);
-  const [refundSuccess, setRefundSuccess] = useState(false);
 
   if (!transaction) return null;
 
@@ -52,7 +46,6 @@ export const TransactionDetailModal: React.FC<TransactionDetailModalProps> = ({
     try {
       setLoadingRefund(true);
       await onRefund(transaction.id);
-      setRefundSuccess(true);
     } catch (err: any) {
       alert(err?.response?.data?.message || 'Failed to refund transaction');
     } finally {

@@ -45,14 +45,31 @@ export const App: React.FC = () => {
   const [selectedTxn, setSelectedTxn] = useState<Transaction | null>(null);
   const [showCreateTxnModal, setShowCreateTxnModal] = useState<boolean>(false);
 
+  const fetchUserData = React.useCallback(async (userId: number) => {
+    try {
+      const [w, txns, userRewards, userRefs] = await Promise.all([
+        WalletService.getBalance(userId),
+        TransactionService.getTransactions(userId),
+        RewardService.getUserRewards(userId),
+        ReferralService.getUserReferrals(userId),
+      ]);
+      setWallet(w);
+      setTransactions(txns);
+      setRewards(userRewards);
+      setReferrals(userRefs);
+    } catch (err) {
+      console.error('Failed to load user state:', err);
+    }
+  }, []);
+
   // Fetch initial data
-  const fetchData = async () => {
+  const fetchData = React.useCallback(async () => {
     try {
       setLoading(true);
       const fetchedUsers = await UserService.getUsers();
       setUsers(fetchedUsers);
 
-      const activeUser = currentUser || fetchedUsers[0];
+      const activeUser = fetchedUsers[0];
       if (activeUser) {
         setCurrentUser(activeUser);
         await fetchUserData(activeUser.id);
@@ -69,28 +86,11 @@ export const App: React.FC = () => {
     } finally {
       setLoading(false);
     }
-  };
-
-  const fetchUserData = async (userId: number) => {
-    try {
-      const [w, txns, userRewards, userRefs] = await Promise.all([
-        WalletService.getBalance(userId),
-        TransactionService.getTransactions(userId),
-        RewardService.getUserRewards(userId),
-        ReferralService.getUserReferrals(userId),
-      ]);
-      setWallet(w);
-      setTransactions(txns);
-      setRewards(userRewards);
-      setReferrals(userRefs);
-    } catch (err) {
-      console.error('Failed to load user state:', err);
-    }
-  };
+  }, [fetchUserData]);
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [fetchData]);
 
   const handleSelectUser = async (user: User) => {
     setCurrentUser(user);

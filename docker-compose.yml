@@ -1,0 +1,70 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: rewards-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-rewardsdb}
+      POSTGRES_USER: ${POSTGRES_USER:-rewards_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-rewards_secure_pass}
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-rewards_user} -d ${POSTGRES_DB:-rewardsdb}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - rewards-net
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: rewards-backend
+    restart: unless-stopped
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/${POSTGRES_DB:-rewardsdb}
+      SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER:-rewards_user}
+      SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD:-rewards_secure_pass}
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      CORS_ALLOWED_ORIGINS: "http://localhost:80,http://localhost:5173,http://localhost"
+      SERVER_PORT: 8080
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    networks:
+      - rewards-net
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: rewards-frontend
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+    networks:
+      - rewards-net
+
+networks:
+  rewards-net:
+    driver: bridge
+
+volumes:
+  postgres_data:
+    driver: local

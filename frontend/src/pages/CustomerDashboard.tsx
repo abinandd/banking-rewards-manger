@@ -1,17 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { 
   Wallet, 
   Award, 
   TrendingUp, 
-  ArrowUpRight, 
   ShoppingBag, 
   Sparkles, 
   Plus, 
-  ArrowRight,
-  ShieldCheck,
-  CheckCircle2,
-  XCircle,
-  Clock
+  ArrowRight
 } from 'lucide-react';
 import { User, RewardWallet, Transaction, Reward } from '../types';
 
@@ -38,10 +33,6 @@ export const CustomerDashboard: React.FC<CustomerDashboardProps> = ({
   const totalCashbackCredited = rewards
     .filter(r => r.type === 'CASHBACK' && r.status === 'CREDITED')
     .reduce((acc, r) => acc + Number(r.amount), 0);
-
-  const totalPointsCredited = rewards
-    .filter(r => r.type === 'POINTS' && r.status === 'CREDITED')
-    .reduce((acc, r) => acc + Number(r.points), 0);
 
   const recentTransactions = transactions.slice(0, 5);
 

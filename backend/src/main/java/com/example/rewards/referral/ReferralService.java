@@ -32,6 +32,10 @@ public class ReferralService {
         User referrer = userRepository.findById(referrerId)
                 .orElseThrow(() -> new ResourceNotFoundException("Referrer user not found: " + referrerId));
 
+        if (referrer.getEmail() != null && referrer.getEmail().equalsIgnoreCase(friendEmail)) {
+            throw new BusinessException("Cannot refer yourself");
+        }
+
         Referral referral = Referral.builder()
                 .referrerUserId(referrerId)
                 .referredUserName(friendName)

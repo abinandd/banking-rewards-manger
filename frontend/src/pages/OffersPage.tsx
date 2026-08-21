@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Flame, Clock, Sparkles, Tag, ArrowRight, Check } from 'lucide-react';
+import React from 'react';
+import { Flame, Clock, ArrowRight } from 'lucide-react';
 import { Campaign } from '../types';
 
 interface OffersPageProps {
