@@ -283,7 +283,7 @@ export const App: React.FC = () => {
 
         <Header currentTab={currentTab} isAdmin={isAdmin} />
         
-        <main className="flex-1 w-full max-w-7xl mx-auto p-4 sm:p-6 lg:p-8 overflow-y-auto">
+        <main className="flex-1 w-full p-4 sm:p-6 lg:p-8 overflow-y-auto">
           {!isAdmin && currentUser && (
             <>
               {(currentTab === 'dashboard' || currentTab === 'transactions') && (
