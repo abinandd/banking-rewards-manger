@@ -38,7 +38,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentTab, onSelectTab, isAdm
   const items = isAdmin ? adminNavItems : customerNavItems;
 
   return (
-    <aside className="w-64 bg-white border-r border-slate-200 min-h-[calc(100vh-4rem)] flex flex-col justify-between p-4">
+    <aside className="w-64 bg-white border-r border-slate-200 h-full overflow-y-auto flex flex-col justify-between p-4 flex-shrink-0">
       <div className="space-y-1">
         <div className="px-3 py-2 text-xs font-semibold uppercase tracking-wider text-slate-400">
           {isAdmin ? 'Financial Admin Console' : 'Banking & Rewards'}
