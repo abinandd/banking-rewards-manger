@@ -63,7 +63,7 @@ export const CreateTransactionModal: React.FC<CreateTransactionModalProps> = ({
 
  return (
  <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
- <div className="bg-white rounded-3xl max-w-md w-full overflow-hidden shadow-2xl animate-in fade-in zoom-in-95 duration-200">
+ <div className="bg-white rounded-3xl max-w-md w-full overflow-hidden animate-in fade-in zoom-in-95 duration-200">
  <div className="p-6 bg-slate-900 text-white flex items-center justify-between">
  <div className="flex items-center space-x-3">
  <div className="p-2.5 bg-emerald-500/20 text-emerald-400 rounded-xl">
@@ -174,7 +174,7 @@ export const CreateTransactionModal: React.FC<CreateTransactionModalProps> = ({
  <button
  type="submit"
  disabled={loading}
- className="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-xl shadow-md transition disabled:opacity-50 flex items-center justify-center space-x-2"
+ className="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-xl transition disabled:opacity-50 flex items-center justify-center space-x-2"
  >
  <span>{loading ? 'Executing...' : 'Process Purchase & Calculate Cashback'}</span>
  <ArrowRight className="h-4 w-4"/>

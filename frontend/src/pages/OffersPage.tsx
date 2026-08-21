@@ -46,7 +46,7 @@ export const OffersPage: React.FC<OffersPageProps> = ({ campaigns, onOpenCreateT
  {campaigns.map((c) => (
  <div
  key={c.id}
- className="bg-white rounded-3xl p-6 shadow-sm hover:shadow-md transition flex flex-col justify-between relative overflow-hidden"
+ className="bg-white rounded-3xl p-6 hover: transition flex flex-col justify-between relative overflow-hidden"
  >
  <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-amber-400/20 to-emerald-400/20 rounded-bl-full pointer-events-none"></div>
 

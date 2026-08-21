@@ -81,7 +81,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
  onClick={() => onSelectTab(item.id)}
  className={`w-full flex items-center space-x-3 px-3 py-3 rounded-xl text-sm font-medium transition-all ${
  isActive
- ? 'bg-emerald-500/10 text-emerald-400 shadow-sm font-medium'
+ ? 'bg-emerald-500/10 text-emerald-400 font-medium'
  : 'text-slate-400 hover:bg-slate-800 hover:text-slate-200'
  }`}
  >
@@ -131,26 +131,26 @@ export const Sidebar: React.FC<SidebarProps> = ({
  <span>{isAdmin ? 'Exit Admin Console' : 'Switch to Admin'}</span>
  </button>
 
-  {/* User Profile & Logout */}
-  <div className="flex items-center justify-between p-3 bg-slate-950/50 rounded-xl">
-    <div className="flex items-center space-x-3">
-      <div className="h-9 w-9 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center font-semibold text-sm shadow-md text-white">
-        {isAdmin ? 'A' : (currentUser ? currentUser.name.charAt(0) : 'U')}
-      </div>
-      <div>
-        <div className="text-sm font-semibold text-slate-200 leading-none">
-          {isAdmin ? 'System Admin' : (currentUser?.name || 'Customer')}
-        </div>
-        <div className="text-[10px] text-emerald-400 font-medium mt-1">
-          {isAdmin ? 'Full Access' : (currentUser ? `${currentUser.tier} TIER` : '')}
-        </div>
-      </div>
-    </div>
-    <button className="p-2 text-slate-400 hover:text-rose-400 hover:bg-rose-500/10 rounded-lg transition" title="Logout">
-      <LogOut className="h-4 w-4" />
-    </button>
-  </div>
-  </div>
+ {/* User Profile & Logout */}
+ <div className="flex items-center justify-between p-3 bg-slate-950/50 rounded-xl">
+ <div className="flex items-center space-x-3">
+ <div className="h-9 w-9 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center font-semibold text-sm text-white">
+ {isAdmin ? 'A' : (currentUser ? currentUser.name.charAt(0) : 'U')}
+ </div>
+ <div>
+ <div className="text-sm font-semibold text-slate-200 leading-none">
+ {isAdmin ? 'System Admin' : (currentUser?.name || 'Customer')}
+ </div>
+ <div className="text-[10px] text-emerald-400 font-medium mt-1">
+ {isAdmin ? 'Full Access' : (currentUser ? `${currentUser.tier} TIER` : '')}
+ </div>
+ </div>
+ </div>
+ <button className="p-2 text-slate-400 hover:text-rose-400 hover:bg-rose-500/10 rounded-lg transition"title="Logout">
+ <LogOut className="h-4 w-4"/>
+ </button>
+ </div>
+ </div>
  </aside>
  );
 };

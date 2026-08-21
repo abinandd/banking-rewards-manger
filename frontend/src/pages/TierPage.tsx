@@ -75,7 +75,7 @@ export const TierPage: React.FC<TierPageProps> = ({ user, wallet, onUpgradeTier 
  </div>
 
  {/* Hero Tier Card */}
- <div className="bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 rounded-3xl p-8 text-white shadow-2xl relative overflow-hidden gsap-fade-up">
+ <div className="bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 rounded-3xl p-8 text-white relative overflow-hidden gsap-fade-up">
  <div className="absolute top-0 right-0 w-80 h-80 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
  <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
@@ -119,8 +119,8 @@ export const TierPage: React.FC<TierPageProps> = ({ user, wallet, onUpgradeTier 
  key={t.name}
  className={`rounded-3xl p-6 transition flex flex-col justify-between ${
  isCurrent
- ? 'bg-white -2 shadow-lg shadow-emerald-500/10'
- : 'bg-white shadow-sm'
+ ? 'bg-white -2 '
+ : 'bg-white '
  }`}
  >
  <div>

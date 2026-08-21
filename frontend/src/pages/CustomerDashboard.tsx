@@ -72,7 +72,7 @@ export const CustomerDashboard: React.FC<CustomerDashboardProps> = ({
  <div className="flex items-center space-x-3">
  <button
  onClick={onOpenCreateTxn}
- className="flex items-center space-x-2 px-4 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-medium rounded-xl shadow-sm shadow-emerald-600/30 transition active:scale-95"
+ className="flex items-center space-x-2 px-4 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-medium rounded-xl transition active:scale-95"
  >
  <Plus className="h-4 w-4"/>
  <span>Make a Purchase</span>
@@ -83,7 +83,7 @@ export const CustomerDashboard: React.FC<CustomerDashboardProps> = ({
  {/* Main Balances Grid */}
  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 gsap-fade-up">
  {/* Available Cashback Card */}
- <div className="bg-gradient-to-br from-emerald-600 to-teal-700 rounded-3xl p-6 text-white shadow-xl shadow-emerald-900/10 relative overflow-hidden">
+ <div className="bg-gradient-to-br from-emerald-600 to-teal-700 rounded-3xl p-6 text-white relative overflow-hidden">
  <div className="absolute top-0 right-0 -mr-8 -mt-8 w-36 h-36 bg-white/10 rounded-full blur-2xl pointer-events-none"></div>
  <div className="flex items-center justify-between">
  <span className="text-xs font-medium uppercase tracking-wider text-emerald-100">
@@ -105,7 +105,7 @@ export const CustomerDashboard: React.FC<CustomerDashboardProps> = ({
  </div>
 
  {/* Reward Points Card */}
- <div className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl p-6 text-white shadow-xl shadow-slate-950/10 relative overflow-hidden">
+ <div className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl p-6 text-white relative overflow-hidden">
  <div className="absolute top-0 right-0 -mr-8 -mt-8 w-36 h-36 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none"></div>
  <div className="flex items-center justify-between">
  <span className="text-xs font-medium uppercase tracking-wider text-slate-400">
@@ -128,7 +128,7 @@ export const CustomerDashboard: React.FC<CustomerDashboardProps> = ({
  </div>
 
  {/* Tier Status Card */}
- <div className="bg-white rounded-3xl p-6 shadow-sm flex flex-col justify-between">
+ <div className="bg-white rounded-3xl p-6 flex flex-col justify-between">
  <div>
  <div className="flex items-center justify-between">
  <span className="text-xs font-medium uppercase tracking-wider text-slate-400">
@@ -164,7 +164,7 @@ export const CustomerDashboard: React.FC<CustomerDashboardProps> = ({
  </div>
 
  {/* Progress / Monthly Growth Banner */}
- <div className="bg-white rounded-3xl p-6 shadow-sm gsap-fade-up">
+ <div className="bg-white rounded-3xl p-6 gsap-fade-up">
  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
  <div>
  <div className="text-xs font-medium uppercase tracking-wider text-slate-400">
@@ -194,7 +194,7 @@ export const CustomerDashboard: React.FC<CustomerDashboardProps> = ({
  </div>
 
  {/* Recent Transactions & Reward Inspection */}
- <div className="bg-white rounded-3xl shadow-sm overflow-hidden gsap-fade-up">
+ <div className="bg-white rounded-3xl overflow-hidden gsap-fade-up">
  <div className="p-6 flex items-center justify-between">
  <div>
  <h2 className="text-lg font-semibold text-slate-900">Recent Transactions &amp; Audit Trail</h2>

@@ -117,7 +117,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
 
  {/* Top Metrics Cards */}
  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
- <div className="bg-white rounded-3xl p-6 shadow-sm">
+ <div className="bg-white rounded-3xl p-6">
  <div className="flex items-center justify-between text-slate-400 text-xs font-semibold uppercase tracking-wider">
  <span>Total Customers</span>
  <Users className="h-5 w-5 text-indigo-500"/>
@@ -126,7 +126,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
  <div className="text-xs text-slate-500 mt-1">{referrals.length} referrals processed</div>
  </div>
 
- <div className="bg-white rounded-3xl p-6 shadow-sm">
+ <div className="bg-white rounded-3xl p-6">
  <div className="flex items-center justify-between text-slate-400 text-xs font-semibold uppercase tracking-wider">
  <span>Total Transaction Volume</span>
  <ArrowLeftRight className="h-5 w-5 text-blue-500"/>
@@ -137,7 +137,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
  <div className="text-xs text-slate-500 mt-1">{transactions.length} total orders</div>
  </div>
 
- <div className="bg-white rounded-3xl p-6 shadow-sm">
+ <div className="bg-white rounded-3xl p-6">
  <div className="flex items-center justify-between text-slate-400 text-xs font-semibold uppercase tracking-wider">
  <span>Cashback Disbursed</span>
  <Wallet className="h-5 w-5 text-emerald-500"/>
@@ -148,7 +148,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
  <div className="text-xs text-slate-500 mt-1">Ledger verified</div>
  </div>
 
- <div className="bg-white rounded-3xl p-6 shadow-sm">
+ <div className="bg-white rounded-3xl p-6">
  <div className="flex items-center justify-between text-slate-400 text-xs font-semibold uppercase tracking-wider">
  <span>Points Accrued</span>
  <TrendingUp className="h-5 w-5 text-amber-500"/>
@@ -162,7 +162,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
 
  {/* SECTION 1: REWARD RULES ENGINE */}
  {(currentTab === 'admin-dashboard' || currentTab === 'admin-rules') && (
- <div className="bg-white rounded-3xl shadow-sm overflow-hidden">
+ <div className="bg-white rounded-3xl overflow-hidden">
  <div className="p-6 flex items-center justify-between">
  <div>
  <h2 className="text-lg font-semibold text-slate-900 flex items-center space-x-2">
@@ -173,7 +173,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
  </div>
  <button
  onClick={() => setShowRuleModal(true)}
- className="flex items-center space-x-1.5 px-3.5 py-2 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-semibold shadow-sm"
+ className="flex items-center space-x-1.5 px-3.5 py-2 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-semibold"
  >
  <Plus className="h-4 w-4"/>
  <span>Create Rule</span>
@@ -236,7 +236,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
 
  {/* SECTION 2: CAMPAIGN MANAGEMENT */}
  {(currentTab === 'admin-dashboard' || currentTab === 'admin-campaigns') && (
- <div className="bg-white rounded-3xl shadow-sm overflow-hidden">
+ <div className="bg-white rounded-3xl overflow-hidden">
  <div className="p-6 flex items-center justify-between">
  <div>
  <h2 className="text-lg font-semibold text-slate-900 flex items-center space-x-2">
@@ -247,7 +247,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
  </div>
  <button
  onClick={() => setShowCampaignModal(true)}
- className="flex items-center space-x-1.5 px-3.5 py-2 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-semibold shadow-sm"
+ className="flex items-center space-x-1.5 px-3.5 py-2 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-semibold"
  >
  <Plus className="h-4 w-4"/>
  <span>Launch Campaign</span>
@@ -309,7 +309,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
 
  {/* SECTION 3: ALL TRANSACTIONS & REFUNDS */}
  {(currentTab === 'admin-dashboard' || currentTab === 'admin-transactions') && (
- <div className="bg-white rounded-3xl shadow-sm overflow-hidden">
+ <div className="bg-white rounded-3xl overflow-hidden">
  <div className="p-6 flex items-center justify-between">
  <div>
  <h2 className="text-lg font-semibold text-slate-900 flex items-center space-x-2">
@@ -380,7 +380,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
 
  {/* SECTION 4: USER MANAGEMENT */}
  {(currentTab === 'admin-dashboard' || currentTab === 'admin-users') && (
- <div className="bg-white rounded-3xl shadow-sm overflow-hidden">
+ <div className="bg-white rounded-3xl overflow-hidden">
  <div className="p-6 flex items-center justify-between">
  <div>
  <h2 className="text-lg font-semibold text-slate-900 flex items-center space-x-2">
@@ -391,7 +391,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
  </div>
  <button
  onClick={() => setShowUserModal(true)}
- className="flex items-center space-x-1.5 px-3.5 py-2 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-semibold shadow-sm"
+ className="flex items-center space-x-1.5 px-3.5 py-2 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-semibold"
  >
  <Plus className="h-4 w-4"/>
  <span>Register User</span>
@@ -438,7 +438,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
  {/* CREATE RULE MODAL */}
  {showRuleModal && (
  <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
- <div className="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl space-y-4">
+ <div className="bg-white rounded-3xl max-w-md w-full p-6 space-y-4">
  <h3 className="text-lg font-semibold text-slate-900">Create Reward Rule</h3>
  <div className="space-y-3 text-xs">
  <div>
@@ -504,7 +504,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
  await onCreateRule(newRule);
  setShowRuleModal(false);
  }}
- className="px-4 py-2 text-xs font-semibold bg-emerald-600 text-white rounded-xl shadow"
+ className="px-4 py-2 text-xs font-semibold bg-emerald-600 text-white rounded-xl"
  >
  Save Rule
  </button>
@@ -516,7 +516,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
  {/* CREATE CAMPAIGN MODAL */}
  {showCampaignModal && (
  <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
- <div className="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl space-y-4">
+ <div className="bg-white rounded-3xl max-w-md w-full p-6 space-y-4">
  <h3 className="text-lg font-semibold text-slate-900">Launch Campaign Booster</h3>
  <div className="space-y-3 text-xs">
  <div>
@@ -579,7 +579,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
  await onCreateCampaign(newCampaign);
  setShowCampaignModal(false);
  }}
- className="px-4 py-2 text-xs font-semibold bg-amber-600 text-white rounded-xl shadow"
+ className="px-4 py-2 text-xs font-semibold bg-amber-600 text-white rounded-xl"
  >
  Launch Campaign
  </button>
@@ -591,7 +591,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
  {/* CREATE USER MODAL */}
  {showUserModal && (
  <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
- <div className="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl space-y-4">
+ <div className="bg-white rounded-3xl max-w-md w-full p-6 space-y-4">
  <h3 className="text-lg font-semibold text-slate-900">Register New Customer</h3>
  <div className="space-y-3 text-xs">
  <div>
@@ -644,7 +644,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
  setUserName('');
  setUserEmail('');
  }}
- className="px-4 py-2 text-xs font-semibold bg-indigo-600 text-white rounded-xl shadow"
+ className="px-4 py-2 text-xs font-semibold bg-indigo-600 text-white rounded-xl"
  >
  Create Account
  </button>

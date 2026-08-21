@@ -55,7 +55,7 @@ export const TransactionDetailModal: React.FC<TransactionDetailModalProps> = ({
 
  return (
  <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
- <div className="bg-white rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl animate-in fade-in zoom-in-95 duration-200">
+ <div className="bg-white rounded-3xl max-w-lg w-full overflow-hidden animate-in fade-in zoom-in-95 duration-200">
  {/* Header */}
  <div className="p-6 bg-slate-900 text-white flex items-center justify-between">
  <div className="flex items-center space-x-3">
@@ -176,7 +176,7 @@ export const TransactionDetailModal: React.FC<TransactionDetailModalProps> = ({
  <button
  onClick={handleRefund}
  disabled={loadingRefund}
- className="w-full flex items-center justify-center space-x-2 py-3 px-4 bg-rose-600 hover:bg-rose-700 text-white font-semibold rounded-xl shadow-md transition active:scale-98 disabled:opacity-50"
+ className="w-full flex items-center justify-center space-x-2 py-3 px-4 bg-rose-600 hover:bg-rose-700 text-white font-semibold rounded-xl transition active:scale-98 disabled:opacity-50"
  >
  <RotateCcw className="h-4 w-4"/>
  <span>{loadingRefund ? 'Processing Refund...' : 'Refund Transaction & Reverse Reward'}</span>

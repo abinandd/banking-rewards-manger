@@ -45,7 +45,7 @@ export const RewardsWallet: React.FC<RewardsWalletProps> = ({ user: _user, walle
 
  {/* Wallet Balances Card */}
  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 gsap-fade-up">
- <div className="bg-white rounded-3xl p-6 shadow-sm flex items-center justify-between">
+ <div className="bg-white rounded-3xl p-6 flex items-center justify-between">
  <div>
  <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
  Available Cashback Balance
@@ -60,7 +60,7 @@ export const RewardsWallet: React.FC<RewardsWalletProps> = ({ user: _user, walle
  </div>
  </div>
 
- <div className="bg-white rounded-3xl p-6 shadow-sm flex items-center justify-between">
+ <div className="bg-white rounded-3xl p-6 flex items-center justify-between">
  <div>
  <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
  Reward Points Balance
@@ -77,7 +77,7 @@ export const RewardsWallet: React.FC<RewardsWalletProps> = ({ user: _user, walle
  </div>
 
  {/* Rewards Activity Ledger */}
- <div className="bg-white rounded-3xl shadow-sm overflow-hidden gsap-fade-up">
+ <div className="bg-white rounded-3xl overflow-hidden gsap-fade-up">
  <div className="p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
  <div>
  <h2 className="text-lg font-semibold text-slate-900">Reward Activity History</h2>
@@ -91,7 +91,7 @@ export const RewardsWallet: React.FC<RewardsWalletProps> = ({ user: _user, walle
  onClick={() => setFilterType(filter)}
  className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
  filterType === filter
- ? 'bg-slate-900 text-white shadow-sm'
+ ? 'bg-slate-900 text-white '
  : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
  }`}
  >

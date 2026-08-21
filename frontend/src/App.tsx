@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { 
  UserService, 
  WalletService, 
@@ -18,6 +18,8 @@ import {
 } from './types';
 import { Sidebar } from './components/Sidebar';
 import { Header } from './components/Header';
+import Lenis from 'lenis';
+import 'lenis/dist/lenis.css';
 import { CustomerDashboard } from './pages/CustomerDashboard';
 import { RewardsWallet } from './pages/RewardsWallet';
 import { OffersPage } from './pages/OffersPage';
@@ -41,12 +43,35 @@ export const App: React.FC = () => {
  const [currentTab, setCurrentTab] = useState<string>('dashboard');
  const [isAdmin, setIsAdmin] = useState<boolean>(false);
  const [loading, setLoading] = useState<boolean>(true);
+ const [error, setError] = useState<string | null>(null);
+
+ const scrollRef = useRef<HTMLElement>(null);
+ const contentRef = useRef<HTMLDivElement>(null);
+
+ useEffect(() => {
+   if (!scrollRef.current || !contentRef.current) return;
+   
+   const lenis = new Lenis({
+     wrapper: scrollRef.current,
+     content: contentRef.current,
+     lerp: 0.08,
+   });
+
+   function raf(time: number) {
+     lenis.raf(time);
+     requestAnimationFrame(raf);
+   }
+
+   requestAnimationFrame(raf);
+
+   return () => {
+     lenis.destroy();
+   };
+ }, []);
 
  // Modals
  const [selectedTxn, setSelectedTxn] = useState<Transaction | null>(null);
  const [showCreateTxnModal, setShowCreateTxnModal] = useState<boolean>(false);
-
- const [error, setError] = useState<string | null>(null);
 
  const fetchUserData = React.useCallback(async (userId: number) => {
  try {
@@ -263,7 +288,7 @@ export const App: React.FC = () => {
 
  <div className="flex-1 flex flex-col overflow-hidden relative">
  {error && (
- <div className="bg-red-50 -4 p-4 m-4 sm:mx-6 lg:mx-8 rounded shadow-sm relative flex-shrink-0 z-10">
+ <div className="bg-red-50 -4 p-4 m-4 sm:mx-6 lg:mx-8 rounded relative flex-shrink-0 z-10">
  <div className="flex">
  <div className="flex-shrink-0">
  <AlertTriangle className="h-5 w-5 text-red-500"/>
@@ -283,7 +308,8 @@ export const App: React.FC = () => {
 
  <Header currentTab={currentTab} isAdmin={isAdmin} />
  
- <main className="flex-1 w-full p-4 sm:p-6 lg:p-8 overflow-y-auto">
+ <main ref={scrollRef} className="flex-1 w-full p-4 sm:p-6 lg:p-8 overflow-y-auto">
+ <div ref={contentRef}>
  {!isAdmin && currentUser && (
  <>
  {(currentTab === 'dashboard' || currentTab === 'transactions') && (
@@ -351,6 +377,7 @@ export const App: React.FC = () => {
  onCreateUser={handleCreateUser}
  />
  )}
+ </div>
  </main>
  </div>
 

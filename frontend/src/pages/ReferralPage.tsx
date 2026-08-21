@@ -67,7 +67,7 @@ export const ReferralPage: React.FC<ReferralPageProps> = ({
  </div>
 
  {/* Hero Referral Code Card */}
- <div className="bg-gradient-to-br from-emerald-600 to-teal-800 rounded-3xl p-8 text-white shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-6 relative overflow-hidden gsap-fade-up">
+ <div className="bg-gradient-to-br from-emerald-600 to-teal-800 rounded-3xl p-8 text-white flex flex-col md:flex-row md:items-center justify-between gap-6 relative overflow-hidden gsap-fade-up">
  <div>
  <div className="flex items-center space-x-2 text-emerald-200">
  <Gift className="h-5 w-5"/>
@@ -83,7 +83,7 @@ export const ReferralPage: React.FC<ReferralPageProps> = ({
 
  <button
  onClick={handleCopy}
- className="flex items-center justify-center space-x-2 px-6 py-3 bg-white text-emerald-800 hover:bg-emerald-50 font-semibold rounded-2xl shadow-lg transition active:scale-95"
+ className="flex items-center justify-center space-x-2 px-6 py-3 bg-white text-emerald-800 hover:bg-emerald-50 font-semibold rounded-2xl transition active:scale-95"
  >
  {copied ? <Check className="h-5 w-5 text-emerald-600"/> : <Copy className="h-5 w-5"/>}
  <span>{copied ? 'Code Copied!' : 'Copy Referral Code'}</span>
@@ -93,7 +93,7 @@ export const ReferralPage: React.FC<ReferralPageProps> = ({
  {/* Invite Form & History Grid */}
  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 gsap-fade-up">
  {/* Invite Form */}
- <div className="bg-white rounded-3xl p-6 shadow-sm md:col-span-1">
+ <div className="bg-white rounded-3xl p-6 md:col-span-1">
  <h2 className="text-base font-semibold text-slate-900 flex items-center space-x-2">
  <UserPlus className="h-5 w-5 text-emerald-600"/>
  <span>Send Direct Invite</span>
@@ -142,7 +142,7 @@ export const ReferralPage: React.FC<ReferralPageProps> = ({
  </div>
 
  {/* Referrals Table */}
- <div className="bg-white rounded-3xl shadow-sm md:col-span-2 overflow-hidden flex flex-col justify-between">
+ <div className="bg-white rounded-3xl md:col-span-2 overflow-hidden flex flex-col justify-between">
  <div>
  <div className="p-6">
  <h2 className="text-base font-semibold text-slate-900">Your Referrals &amp; Payouts</h2>
@@ -183,7 +183,7 @@ export const ReferralPage: React.FC<ReferralPageProps> = ({
  </span>
  <button
  onClick={() => onCompleteReferral(ref.id)}
- className="px-2.5 py-1 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-medium rounded-lg shadow-sm"
+ className="px-2.5 py-1 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-medium rounded-lg"
  >
  Simulate Join
  </button>
