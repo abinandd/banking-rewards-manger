@@ -64,21 +64,6 @@ npm run dev
 
 ---
 
-## 🧪 Automated Testing
-
-### Backend Unit & Integration Tests (16 Tests)
-```bash
-cd backend
-mvn clean test
-```
-
-### Frontend Lint & Production Build
-```bash
-cd frontend
-npm run lint
-npm run build
-```
-
 ---
 
 ## 📡 API Endpoints Overview
