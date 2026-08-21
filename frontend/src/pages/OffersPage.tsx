@@ -1,5 +1,7 @@
-import React from 'react';
-import { Flame, Clock, ArrowRight } from 'lucide-react';
+import React, { useRef } from 'react';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { Tag, Calendar, Target, Plus, Zap, Percent, ShoppingBag, Flame, Clock, ArrowRight } from 'lucide-react';
 import { Campaign } from '../types';
 
 interface OffersPageProps {
@@ -8,18 +10,30 @@ interface OffersPageProps {
 }
 
 export const OffersPage: React.FC<OffersPageProps> = ({ campaigns, onOpenCreateTxn }) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    gsap.from('.gsap-fade-up', {
+      y: 20,
+      opacity: 0,
+      duration: 0.5,
+      stagger: 0.1,
+      ease: 'power2.out'
+    });
+  }, { scope: containerRef });
+
   return (
-    <div className="space-y-6">
-      <div>
+    <div ref={containerRef} className="space-y-6">
+      <div className="gsap-fade-up">
         <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-          Special Offers &amp; Boosters 🔥
+          Special Offers &amp; Boosters 
         </h1>
         <p className="text-sm text-slate-500 mt-1">
           Active seasonal promotions and merchant boost campaigns evaluated in real-time by the Reward Engine.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 gsap-fade-up">
         {campaigns.map((c) => (
           <div
             key={c.id}

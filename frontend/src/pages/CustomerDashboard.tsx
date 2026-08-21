@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
 import { 
   Wallet, 
   Award, 
@@ -29,6 +31,18 @@ export const CustomerDashboard: React.FC<CustomerDashboardProps> = ({
   onSelectTab,
   onSelectTxn,
 }) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    gsap.from('.gsap-fade-up', {
+      y: 20,
+      opacity: 0,
+      duration: 0.5,
+      stagger: 0.1,
+      ease: 'power2.out'
+    });
+  }, { scope: containerRef });
+
   const getGreeting = () => {
     const hour = new Date().getHours();
     if (hour < 12) return 'Good morning';
@@ -44,9 +58,9 @@ export const CustomerDashboard: React.FC<CustomerDashboardProps> = ({
   const recentTransactions = transactions.slice(0, 5);
 
   return (
-    <div className="space-y-6">
+    <div ref={containerRef} className="space-y-6">
       {/* Header Greeting */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 gsap-fade-up">
         <div>
           <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
             {getGreeting()}, {user.name}
@@ -67,7 +81,7 @@ export const CustomerDashboard: React.FC<CustomerDashboardProps> = ({
       </div>
 
       {/* Main Balances Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 gsap-fade-up">
         {/* Available Cashback Card */}
         <div className="bg-gradient-to-br from-emerald-600 to-teal-700 rounded-3xl p-6 text-white shadow-xl shadow-emerald-900/10 relative overflow-hidden">
           <div className="absolute top-0 right-0 -mr-8 -mt-8 w-36 h-36 bg-white/10 rounded-full blur-2xl pointer-events-none"></div>
@@ -127,7 +141,7 @@ export const CustomerDashboard: React.FC<CustomerDashboardProps> = ({
                   ? 'bg-amber-100 text-amber-700'
                   : 'bg-slate-100 text-slate-700'
               }`}>
-                {user.tier} ⭐
+                {user.tier}
               </span>
             </div>
             <div className="mt-3">
@@ -150,7 +164,7 @@ export const CustomerDashboard: React.FC<CustomerDashboardProps> = ({
       </div>
 
       {/* Progress / Monthly Growth Banner */}
-      <div className="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm">
+      <div className="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm gsap-fade-up">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
             <div className="text-xs font-semibold uppercase tracking-wider text-slate-400">
@@ -171,7 +185,7 @@ export const CustomerDashboard: React.FC<CustomerDashboardProps> = ({
             </div>
             <div className="w-full bg-slate-100 rounded-full h-3 overflow-hidden">
               <div
-                className="bg-emerald-500 h-3 rounded-full transition-all duration-500"
+                className="bg-emerald-500 h-3 rounded-full transition-all duration-1000 ease-out"
                 style={{ width: `${Math.min(100, (totalCashbackCredited / 500) * 100)}%` }}
               ></div>
             </div>
@@ -180,7 +194,7 @@ export const CustomerDashboard: React.FC<CustomerDashboardProps> = ({
       </div>
 
       {/* Recent Transactions & Reward Inspection */}
-      <div className="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
+      <div className="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden gsap-fade-up">
         <div className="p-6 border-b border-slate-100 flex items-center justify-between">
           <div>
             <h2 className="text-lg font-bold text-slate-900">Recent Transactions &amp; Audit Trail</h2>

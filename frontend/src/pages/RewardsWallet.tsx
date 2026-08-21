@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Wallet, Award, ArrowUpRight, ArrowDownLeft } from 'lucide-react';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
 import { RewardWallet, Reward, User } from '../types';
 
 interface RewardsWalletProps {
@@ -10,6 +12,17 @@ interface RewardsWalletProps {
 
 export const RewardsWallet: React.FC<RewardsWalletProps> = ({ user: _user, wallet, rewards }) => {
   const [filterType, setFilterType] = useState<string>('ALL');
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    gsap.from('.gsap-fade-up', {
+      y: 20,
+      opacity: 0,
+      duration: 0.5,
+      stagger: 0.1,
+      ease: 'power2.out'
+    });
+  }, { scope: containerRef });
 
   const filteredRewards = rewards.filter((r) => {
     if (filterType === 'CASHBACK') return r.type === 'CASHBACK';
@@ -19,8 +32,8 @@ export const RewardsWallet: React.FC<RewardsWalletProps> = ({ user: _user, walle
   });
 
   return (
-    <div className="space-y-6">
-      <div>
+    <div ref={containerRef} className="space-y-6">
+      <div className="gsap-fade-up">
         <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
           Rewards Wallet &amp; Ledger
         </h1>
@@ -29,8 +42,9 @@ export const RewardsWallet: React.FC<RewardsWalletProps> = ({ user: _user, walle
         </p>
       </div>
 
+
       {/* Wallet Balances Card */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 gsap-fade-up">
         <div className="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm flex items-center justify-between">
           <div>
             <span className="text-xs font-bold uppercase tracking-wider text-slate-400">
@@ -63,7 +77,7 @@ export const RewardsWallet: React.FC<RewardsWalletProps> = ({ user: _user, walle
       </div>
 
       {/* Rewards Activity Ledger */}
-      <div className="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
+      <div className="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden gsap-fade-up">
         <div className="p-6 border-b border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
             <h2 className="text-lg font-bold text-slate-900">Reward Activity History</h2>

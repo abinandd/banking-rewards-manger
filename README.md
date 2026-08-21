@@ -4,7 +4,7 @@ A production-grade, modular financial application built with **Spring Boot 3 (Ja
 
 ---
 
-## 🏛 Architecture & Financial Principles
+##  Architecture & Financial Principles
 
 1. **Core Backend Modules:**
    - **User Service:** Customer profiles, referral code generators, and multi-tier loyalty matrix (Silver, Gold, Platinum).
@@ -26,7 +26,7 @@ A production-grade, modular financial application built with **Spring Boot 3 (Ja
 
 ---
 
-## 🚀 Deployment & Running
+##  Deployment & Running
 
 ### Option 1: One-Click Production Deployment with Docker Compose
 ```bash
@@ -66,7 +66,7 @@ npm run dev
 
 ---
 
-## 📡 API Endpoints Overview
+##  API Endpoints Overview
 
 | Method | Endpoint | Description |
 | :--- | :--- | :--- |

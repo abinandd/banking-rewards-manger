@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
 import { Award, CheckCircle2, Zap } from 'lucide-react';
 import { User, RewardWallet } from '../types';
 
@@ -10,6 +12,17 @@ interface TierPageProps {
 
 export const TierPage: React.FC<TierPageProps> = ({ user, wallet, onUpgradeTier }) => {
   const [loading, setLoading] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    gsap.from('.gsap-fade-up', {
+      y: 20,
+      opacity: 0,
+      duration: 0.5,
+      stagger: 0.1,
+      ease: 'power2.out'
+    });
+  }, { scope: containerRef });
 
   const currentPoints = wallet ? wallet.pointsBalance : 0;
   const targetPoints = user.tier === 'SILVER' ? 5000 : user.tier === 'GOLD' ? 10000 : 25000;
@@ -51,8 +64,8 @@ export const TierPage: React.FC<TierPageProps> = ({ user, wallet, onUpgradeTier 
   };
 
   return (
-    <div className="space-y-6">
-      <div>
+    <div ref={containerRef} className="space-y-6">
+      <div className="gsap-fade-up">
         <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
           Rewards Tier &amp; Membership Status
         </h1>
@@ -62,7 +75,7 @@ export const TierPage: React.FC<TierPageProps> = ({ user, wallet, onUpgradeTier 
       </div>
 
       {/* Hero Tier Card */}
-      <div className="bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 rounded-3xl p-8 text-white shadow-2xl relative overflow-hidden">
+      <div className="bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 rounded-3xl p-8 text-white shadow-2xl relative overflow-hidden gsap-fade-up">
         <div className="absolute top-0 right-0 w-80 h-80 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
@@ -72,7 +85,7 @@ export const TierPage: React.FC<TierPageProps> = ({ user, wallet, onUpgradeTier 
               <span className="text-xs font-bold uppercase tracking-widest">Active Membership</span>
             </div>
             <div className="text-3xl sm:text-4xl font-black mt-2 tracking-tight">
-              {user.tier} TIER MEMBER ⭐
+              {user.tier} TIER MEMBER
             </div>
             <p className="text-xs text-slate-400 mt-1">
               Account: {user.name} ({user.email})
@@ -98,7 +111,7 @@ export const TierPage: React.FC<TierPageProps> = ({ user, wallet, onUpgradeTier 
       </div>
 
       {/* Tier Comparison Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 gsap-fade-up">
         {tiers.map((t) => {
           const isCurrent = user.tier === t.name;
           return (

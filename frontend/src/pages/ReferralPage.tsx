@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
 import { Gift, Copy, Check, UserPlus, CheckCircle2, Clock } from 'lucide-react';
 import { User, Referral } from '../types';
 
@@ -19,6 +21,17 @@ export const ReferralPage: React.FC<ReferralPageProps> = ({
   const [friendName, setFriendName] = useState('');
   const [friendEmail, setFriendEmail] = useState('');
   const [loading, setLoading] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    gsap.from('.gsap-fade-up', {
+      y: 20,
+      opacity: 0,
+      duration: 0.5,
+      stagger: 0.1,
+      ease: 'power2.out'
+    });
+  }, { scope: containerRef });
 
   const handleCopy = () => {
     navigator.clipboard.writeText(user.referralCode || 'REWARD500ABC');
@@ -43,8 +56,8 @@ export const ReferralPage: React.FC<ReferralPageProps> = ({
   };
 
   return (
-    <div className="space-y-6">
-      <div>
+    <div ref={containerRef} className="space-y-6">
+      <div className="gsap-fade-up">
         <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight flex items-center space-x-2">
           <span>Invite Friends &amp; Earn</span>
           <Gift className="h-6 w-6 text-emerald-600" />
@@ -55,7 +68,7 @@ export const ReferralPage: React.FC<ReferralPageProps> = ({
       </div>
 
       {/* Hero Referral Code Card */}
-      <div className="bg-gradient-to-br from-emerald-600 to-teal-800 rounded-3xl p-8 text-white shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-6 relative overflow-hidden">
+      <div className="bg-gradient-to-br from-emerald-600 to-teal-800 rounded-3xl p-8 text-white shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-6 relative overflow-hidden gsap-fade-up">
         <div>
           <div className="flex items-center space-x-2 text-emerald-200">
             <Gift className="h-5 w-5" />
@@ -79,7 +92,7 @@ export const ReferralPage: React.FC<ReferralPageProps> = ({
       </div>
 
       {/* Invite Form & History Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 gsap-fade-up">
         {/* Invite Form */}
         <div className="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm md:col-span-1">
           <h2 className="text-base font-bold text-slate-900 flex items-center space-x-2">
