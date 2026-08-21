@@ -1,4 +1,4 @@
-# Mini Banking Rewards & Cashback Platform 💳✨
+# Banking Rewards & Cashback Platform 
 
 A modular monolith financial application built with **Spring Boot 3 (Java 21)** and **React + TypeScript + Tailwind CSS** demonstrating real-world financial transaction reward calculations, multi-rule evaluation pipelines, immutable double-entry wallet ledgering, and 1-click refund reversals.
 
