@@ -35,8 +35,8 @@ export const ReferralPage: React.FC<ReferralPageProps> = ({
       await onInviteFriend(friendName, friendEmail);
       setFriendName('');
       setFriendEmail('');
-    } catch (err: any) {
-      alert(err?.response?.data?.message || 'Failed to send invite');
+    } catch (err) {
+      alert((err as Error).message || 'Failed to send invite. Please try again.');
     } finally {
       setLoading(false);
     }

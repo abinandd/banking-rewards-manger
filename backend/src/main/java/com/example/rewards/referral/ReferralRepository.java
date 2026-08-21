@@ -7,4 +7,5 @@ import java.util.List;
 @Repository
 public interface ReferralRepository extends JpaRepository<Referral, Long> {
     List<Referral> findByReferrerUserIdOrderByCreatedAtDesc(Long referrerUserId);
+    boolean existsByReferrerUserIdAndReferredUserEmail(Long referrerUserId, String referredUserEmail);
 }

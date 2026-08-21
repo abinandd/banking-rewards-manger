@@ -44,7 +44,9 @@ public class TierRewardRule implements RewardRule {
         }
 
         if (tierMultiplier > 1) {
-            long bonusPoints = (transaction.getAmount().longValue() / 10) * (tierMultiplier - 1);
+            long bonusPoints = transaction.getAmount()
+                    .divide(BigDecimal.valueOf(10), 0, RoundingMode.DOWN)
+                    .longValue() * (tierMultiplier - 1);
             if (bonusPoints > 0) {
                 result.addPoints(getRuleName() + " Points (" + tier.name() + ")",
                         tier.name() + " tier " + tierMultiplier + "x points boost",

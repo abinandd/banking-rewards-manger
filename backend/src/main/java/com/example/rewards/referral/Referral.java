@@ -5,7 +5,10 @@ import lombok.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "referrals")
+@Table(name = "referrals", indexes = {
+        @Index(name = "idx_referrals_referrer_user_id", columnList = "referrer_user_id"),
+        @Index(name = "idx_referrals_status", columnList = "status")
+})
 @Getter
 @Setter
 @NoArgsConstructor

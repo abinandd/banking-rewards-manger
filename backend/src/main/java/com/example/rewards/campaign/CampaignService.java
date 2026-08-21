@@ -1,7 +1,10 @@
 package com.example.rewards.campaign;
 
+import com.example.rewards.common.config.CacheConfig;
 import com.example.rewards.common.exception.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,11 +21,9 @@ public class CampaignService {
         return campaignRepository.findAll();
     }
 
+    @Cacheable(value = CacheConfig.ACTIVE_CAMPAIGNS_CACHE)
     public List<Campaign> getActiveCampaigns() {
-        LocalDate today = LocalDate.now();
-        return campaignRepository.findByActiveTrue().stream()
-                .filter(c -> !today.isBefore(c.getStartDate()) && !today.isAfter(c.getEndDate()))
-                .toList();
+        return campaignRepository.findActiveCampaignsForDate(LocalDate.now());
     }
 
     public Campaign getCampaignById(Long id) {
@@ -31,6 +32,7 @@ public class CampaignService {
     }
 
     @Transactional
+    @CacheEvict(value = CacheConfig.ACTIVE_CAMPAIGNS_CACHE, allEntries = true)
     public Campaign createCampaign(Campaign campaign) {
         if (campaign.getStartDate() == null) {
             campaign.setStartDate(LocalDate.now());
@@ -42,6 +44,7 @@ public class CampaignService {
     }
 
     @Transactional
+    @CacheEvict(value = CacheConfig.ACTIVE_CAMPAIGNS_CACHE, allEntries = true)
     public Campaign toggleCampaignStatus(Long id) {
         Campaign campaign = getCampaignById(id);
         campaign.setActive(!campaign.isActive());
@@ -49,6 +52,7 @@ public class CampaignService {
     }
 
     @Transactional
+    @CacheEvict(value = CacheConfig.ACTIVE_CAMPAIGNS_CACHE, allEntries = true)
     public void deleteCampaign(Long id) {
         campaignRepository.deleteById(id);
     }

@@ -5,6 +5,7 @@ import com.example.rewards.common.exception.ResourceNotFoundException;
 import com.example.rewards.wallet.RewardWallet;
 import com.example.rewards.wallet.WalletService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -33,9 +34,13 @@ public class UserService {
                 .referralCode(referralCode)
                 .build();
 
-        User saved = userRepository.save(user);
-        walletService.getOrCreateWallet(saved.getId());
-        return saved;
+        try {
+            User saved = userRepository.save(user);
+            walletService.getOrCreateWallet(saved.getId());
+            return saved;
+        } catch (DataIntegrityViolationException ex) {
+            throw new BusinessException("User already exists with email: " + email);
+        }
     }
 
     public User getUserById(Long id) {

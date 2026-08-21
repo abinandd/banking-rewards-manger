@@ -36,6 +36,10 @@ public class ReferralService {
             throw new BusinessException("Cannot refer yourself");
         }
 
+        if (referralRepository.existsByReferrerUserIdAndReferredUserEmail(referrerId, friendEmail)) {
+            throw new BusinessException("You have already sent a referral invite to: " + friendEmail);
+        }
+
         Referral referral = Referral.builder()
                 .referrerUserId(referrerId)
                 .referredUserName(friendName)

@@ -1,7 +1,7 @@
 package com.example.rewards.reward.engine;
 
+import com.example.rewards.reward.ActiveRuleProvider;
 import com.example.rewards.reward.RewardRuleEntity;
-import com.example.rewards.reward.RewardRuleRepository;
 import com.example.rewards.reward.RewardType;
 import com.example.rewards.transaction.Transaction;
 import com.example.rewards.user.User;
@@ -18,7 +18,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CategoryRewardRule implements RewardRule {
 
-    private final RewardRuleRepository rewardRuleRepository;
+    private final ActiveRuleProvider activeRuleProvider;
 
     @Override
     public String getRuleName() {
@@ -30,7 +30,7 @@ public class CategoryRewardRule implements RewardRule {
         String category = transaction.getCategory();
         if (category == null) return;
 
-        List<RewardRuleEntity> activeRules = rewardRuleRepository.findByActiveTrue();
+        List<RewardRuleEntity> activeRules = activeRuleProvider.getActiveRules();
 
         for (RewardRuleEntity rule : activeRules) {
             boolean categoryMatch = rule.getCategory() != null &&

@@ -46,8 +46,8 @@ export const CreateTransactionModal: React.FC<CreateTransactionModalProps> = ({
         description,
       });
       onClose();
-    } catch (err: any) {
-      alert(err?.response?.data?.message || 'Failed to create transaction');
+    } catch (err) {
+      alert((err as Error).message || 'Failed to create transaction. Please try again.');
     } finally {
       setLoading(false);
     }

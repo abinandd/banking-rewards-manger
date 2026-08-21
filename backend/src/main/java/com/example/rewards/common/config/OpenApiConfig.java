@@ -18,7 +18,7 @@ public class OpenApiConfig {
     public OpenAPI customOpenAPI(@Value("${server.port:8080}") String serverPort) {
         return new OpenAPI()
                 .info(new Info()
-                        .title("Banking Rewards & Cashback Engine API")
+                        .title("VaultRewards API")
                         .version("1.0.0")
                         .description("Production-grade RESTful API for real-time banking transaction rewards calculation, multi-rule evaluation pipeline, wallet ledgering, and refund reversals.")
                         .contact(new Contact()

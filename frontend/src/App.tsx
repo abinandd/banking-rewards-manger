@@ -45,6 +45,8 @@ export const App: React.FC = () => {
   const [selectedTxn, setSelectedTxn] = useState<Transaction | null>(null);
   const [showCreateTxnModal, setShowCreateTxnModal] = useState<boolean>(false);
 
+  const [error, setError] = useState<string | null>(null);
+
   const fetchUserData = React.useCallback(async (userId: number) => {
     try {
       const [w, txns, userRewards, userRefs] = await Promise.all([
@@ -59,6 +61,7 @@ export const App: React.FC = () => {
       setReferrals(userRefs);
     } catch (err) {
       console.error('Failed to load user state:', err);
+      setError((err as Error).message || 'Failed to load user data');
     }
   }, []);
 
@@ -66,6 +69,7 @@ export const App: React.FC = () => {
   const fetchData = React.useCallback(async () => {
     try {
       setLoading(true);
+      setError(null);
       const fetchedUsers = await UserService.getUsers();
       setUsers(fetchedUsers);
 
@@ -83,6 +87,7 @@ export const App: React.FC = () => {
       setCampaigns(allCampaigns);
     } catch (err) {
       console.error('Failed to load initial data:', err);
+      setError((err as Error).message || 'Failed to connect to the server. Please check that the backend is running.');
     } finally {
       setLoading(false);
     }
@@ -102,15 +107,18 @@ export const App: React.FC = () => {
     setIsAdmin(nextState);
     if (nextState) {
       setCurrentTab('admin-dashboard');
-      // fetch all global transactions and rewards for admin
-      const [allTxns, allRewards, allRefs] = await Promise.all([
-        TransactionService.getTransactions(),
-        RewardService.getAllRewards(),
-        ReferralService.getAllReferrals(),
-      ]);
-      setTransactions(allTxns);
-      setRewards(allRewards);
-      setReferrals(allRefs);
+      try {
+        const [allTxns, allRewards, allRefs] = await Promise.all([
+          TransactionService.getTransactions(),
+          RewardService.getAllRewards(),
+          ReferralService.getAllReferrals(),
+        ]);
+        setTransactions(allTxns);
+        setRewards(allRewards);
+        setReferrals(allRefs);
+      } catch (err) {
+        setError((err as Error).message || 'Failed to load admin data');
+      }
     } else {
       setCurrentTab('dashboard');
       if (currentUser) {
@@ -214,7 +222,25 @@ export const App: React.FC = () => {
       <div className="min-h-screen bg-slate-900 flex items-center justify-center text-white">
         <div className="text-center space-y-3">
           <div className="h-10 w-10 border-4 border-emerald-500 border-t-transparent rounded-full animate-spin mx-auto"></div>
-          <p className="text-sm font-semibold tracking-wider text-slate-300">Connecting to Banking Rewards Monolith...</p>
+          <p className="text-sm font-semibold tracking-wider text-slate-300">Connecting to VaultRewards...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error && users.length === 0) {
+    return (
+      <div className="min-h-screen bg-slate-900 flex items-center justify-center text-white">
+        <div className="text-center space-y-4 max-w-md px-4">
+          <div className="h-12 w-12 rounded-full bg-red-500/20 flex items-center justify-center mx-auto text-2xl">⚠️</div>
+          <h2 className="text-xl font-bold text-white">Connection Failed</h2>
+          <p className="text-sm text-slate-400">{error}</p>
+          <button
+            onClick={fetchData}
+            className="px-6 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-xl transition"
+          >
+            Retry Connection
+          </button>
         </div>
       </div>
     );
@@ -229,6 +255,26 @@ export const App: React.FC = () => {
         isAdmin={isAdmin}
         onToggleAdmin={handleToggleAdmin}
       />
+
+      {error && (
+        <div className="bg-red-50 border-l-4 border-red-500 p-4 m-4 sm:mx-6 lg:mx-8 rounded shadow-sm relative">
+          <div className="flex">
+            <div className="flex-shrink-0">
+              <span className="text-red-500 text-lg">⚠️</span>
+            </div>
+            <div className="ml-3">
+              <p className="text-sm text-red-700 font-medium">{error}</p>
+            </div>
+            <button
+              onClick={() => setError(null)}
+              className="absolute top-4 right-4 text-red-400 hover:text-red-600 transition"
+            >
+              ✕
+            </button>
+          </div>
+        </div>
+      )}
+
 
       <div className="flex flex-1">
         <Sidebar

@@ -26,10 +26,10 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
           <div>
             <span className="text-xl font-bold tracking-tight bg-gradient-to-r from-white via-slate-200 to-emerald-400 bg-clip-text text-transparent">
-              RewardsBank
+              VaultRewards
             </span>
             <span className="hidden sm:inline-block ml-2 text-xs uppercase tracking-wider px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 font-semibold border border-emerald-500/20">
-              Mini Monolith
+              Rewards Engine
             </span>
           </div>
         </div>

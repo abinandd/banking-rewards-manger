@@ -29,6 +29,13 @@ export const CustomerDashboard: React.FC<CustomerDashboardProps> = ({
   onSelectTab,
   onSelectTxn,
 }) => {
+  const getGreeting = () => {
+    const hour = new Date().getHours();
+    if (hour < 12) return 'Good morning';
+    if (hour < 17) return 'Good afternoon';
+    return 'Good evening';
+  };
+
   // Calculate total cashback earned this month
   const totalCashbackCredited = rewards
     .filter(r => r.type === 'CASHBACK' && r.status === 'CREDITED')
@@ -42,7 +49,7 @@ export const CustomerDashboard: React.FC<CustomerDashboardProps> = ({
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-            Good morning, {user.name} 👋
+            {getGreeting()}, {user.name} 👋
           </h1>
           <p className="text-sm text-slate-500 mt-1">
             Here is your live financial rewards ledger and active tier benefits.

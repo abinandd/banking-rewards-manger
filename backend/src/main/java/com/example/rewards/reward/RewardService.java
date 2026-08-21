@@ -1,5 +1,6 @@
 package com.example.rewards.reward;
 
+import com.example.rewards.common.config.CacheConfig;
 import com.example.rewards.common.exception.BusinessException;
 import com.example.rewards.common.exception.ResourceNotFoundException;
 import com.example.rewards.reward.engine.RewardCalculationResult;
@@ -11,6 +12,8 @@ import com.example.rewards.wallet.WalletService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,7 +31,7 @@ public class RewardService {
     private final RewardRuleRepository rewardRuleRepository;
     private final RewardEngine rewardEngine;
     private final WalletService walletService;
-    private final ObjectMapper objectMapper = new ObjectMapper();
+    private final ObjectMapper objectMapper;
 
     public List<Reward> getRewardsByUserId(Long userId) {
         return rewardRepository.findByUserIdOrderByCreatedAtDesc(userId);
@@ -135,16 +138,19 @@ public class RewardService {
     }
 
     // Rules CRUD for Admin
+    @Cacheable(value = CacheConfig.ACTIVE_RULES_CACHE)
     public List<RewardRuleEntity> getAllRules() {
         return rewardRuleRepository.findAll();
     }
 
     @Transactional
+    @CacheEvict(value = CacheConfig.ACTIVE_RULES_CACHE, allEntries = true)
     public RewardRuleEntity createRule(RewardRuleEntity rule) {
         return rewardRuleRepository.save(rule);
     }
 
     @Transactional
+    @CacheEvict(value = CacheConfig.ACTIVE_RULES_CACHE, allEntries = true)
     public RewardRuleEntity toggleRule(Long ruleId) {
         RewardRuleEntity rule = rewardRuleRepository.findById(ruleId)
                 .orElseThrow(() -> new ResourceNotFoundException("Rule not found with id: " + ruleId));
@@ -153,7 +159,11 @@ public class RewardService {
     }
 
     @Transactional
+    @CacheEvict(value = CacheConfig.ACTIVE_RULES_CACHE, allEntries = true)
     public void deleteRule(Long ruleId) {
+        if (!rewardRuleRepository.existsById(ruleId)) {
+            throw new ResourceNotFoundException("Rule not found with id: " + ruleId);
+        }
         rewardRuleRepository.deleteById(ruleId);
     }
 }

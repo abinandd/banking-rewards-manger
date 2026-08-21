@@ -24,7 +24,11 @@ public class SecurityHeadersFilter extends OncePerRequestFilter {
         response.setHeader("X-XSS-Protection", "1; mode=block");
         response.setHeader("Referrer-Policy", "strict-origin-when-cross-origin");
         response.setHeader("Permissions-Policy", "camera=(), microphone=(), geolocation=()");
-        
+        response.setHeader("Content-Security-Policy", "default-src 'none'; frame-ancestors 'none'");
+        // Prevent browsers/proxies from caching sensitive API responses
+        response.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, private");
+        response.setHeader("Pragma", "no-cache");
+
         filterChain.doFilter(request, response);
     }
 }
