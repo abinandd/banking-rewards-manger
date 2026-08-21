@@ -24,6 +24,7 @@ import { OffersPage } from './pages/OffersPage';
 import { TierPage } from './pages/TierPage';
 import { ReferralPage } from './pages/ReferralPage';
 import { AdminDashboard } from './pages/AdminDashboard';
+import { AlertTriangle } from 'lucide-react';
 import { TransactionDetailModal } from './components/TransactionDetailModal';
 import { CreateTransactionModal } from './components/CreateTransactionModal';
 
@@ -232,7 +233,9 @@ export const App: React.FC = () => {
     return (
       <div className="min-h-screen bg-slate-900 flex items-center justify-center text-white">
         <div className="text-center space-y-4 max-w-md px-4">
-          <div className="h-12 w-12 rounded-full bg-red-500/20 flex items-center justify-center mx-auto text-2xl">⚠️</div>
+          <div className="h-12 w-12 rounded-full bg-red-500/20 flex items-center justify-center mx-auto text-2xl">
+            <AlertTriangle className="h-6 w-6 text-red-500" />
+          </div>
           <h2 className="text-xl font-bold text-white">Connection Failed</h2>
           <p className="text-sm text-slate-400">{error}</p>
           <button
@@ -260,7 +263,7 @@ export const App: React.FC = () => {
         <div className="bg-red-50 border-l-4 border-red-500 p-4 m-4 sm:mx-6 lg:mx-8 rounded shadow-sm relative">
           <div className="flex">
             <div className="flex-shrink-0">
-              <span className="text-red-500 text-lg">⚠️</span>
+              <AlertTriangle className="h-5 w-5 text-red-500" />
             </div>
             <div className="ml-3">
               <p className="text-sm text-red-700 font-medium">{error}</p>

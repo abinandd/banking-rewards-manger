@@ -45,8 +45,9 @@ export const ReferralPage: React.FC<ReferralPageProps> = ({
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-          Invite Friends &amp; Earn 🎁
+        <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight flex items-center space-x-2">
+          <span>Invite Friends &amp; Earn</span>
+          <Gift className="h-6 w-6 text-emerald-600" />
         </h1>
         <p className="text-sm text-slate-500 mt-1">
           Share your referral link. Earn 500 bonus reward points for every successful joining.
