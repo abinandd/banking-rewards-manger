@@ -1,4 +1,4 @@
-# Mini Banking Rewards & Cashback Platform 💳✨
+# VaultRewards — Banking Rewards & Cashback Engine 💳✨
 
 A production-grade, modular financial application built with **Spring Boot 3 (Java 21)** and **React + TypeScript + Tailwind CSS**, implementing real-world financial transaction reward calculations, multi-rule evaluation pipelines, immutable double-entry wallet ledgering, and 1-click refund reversals.
 

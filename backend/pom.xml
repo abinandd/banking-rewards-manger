@@ -10,10 +10,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.example</groupId>
-    <artifactId>banking-rewards-manager</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>banking-rewards-manager</name>
-    <description>Mini Banking Rewards &amp; Cashback Platform</description>
+    <artifactId>vault-rewards-engine</artifactId>
+    <version>1.0.0</version>
+    <name>vault-rewards-engine</name>
+    <description>VaultRewards - Production Banking Rewards &amp; Cashback Platform</description>
 
     <properties>
         <java.version>21</java.version>
