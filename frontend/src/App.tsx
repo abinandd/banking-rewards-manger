@@ -17,6 +17,7 @@ import {
   Referral 
 } from './types';
 import { Sidebar } from './components/Sidebar';
+import { Header } from './components/Header';
 import { CustomerDashboard } from './pages/CustomerDashboard';
 import { RewardsWallet } from './pages/RewardsWallet';
 import { OffersPage } from './pages/OffersPage';
@@ -280,6 +281,8 @@ export const App: React.FC = () => {
           </div>
         )}
 
+        <Header currentTab={currentTab} isAdmin={isAdmin} />
+        
         <main className="flex-1 w-full max-w-7xl mx-auto p-4 sm:p-6 lg:p-8 overflow-y-auto">
           {!isAdmin && currentUser && (
             <>
