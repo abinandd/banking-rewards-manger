@@ -63,7 +63,7 @@ export const TransactionDetailModal: React.FC<TransactionDetailModalProps> = ({
  <Receipt className="h-6 w-6"/>
  </div>
  <div>
- <h3 className="text-lg font-semibold">Transaction Inspection</h3>
+ <h3 className="text-lg font-medium">Transaction Inspection</h3>
  <p className="text-xs text-slate-400">TXN-{transaction.id} • Audit Ledger Detail</p>
  </div>
  </div>
@@ -79,24 +79,24 @@ export const TransactionDetailModal: React.FC<TransactionDetailModalProps> = ({
  {/* Main Transaction Summary */}
  <div className="flex items-center justify-between pb-5">
  <div>
- <div className="text-2xl font-extrabold text-slate-900">
+ <div className="text-2xl font-bold text-slate-900">
  ₹{Number(transaction.amount).toLocaleString('en-IN', { minimumFractionDigits: 2 })}
  </div>
  <div className="flex items-center space-x-2 mt-1 text-xs text-slate-500">
- <span className="font-medium text-slate-800">{transaction.merchantName}</span>
+ <span className="font-normal text-slate-800">{transaction.merchantName}</span>
  <span>•</span>
- <span className="bg-slate-100 px-2 py-0.5 rounded text-slate-700 font-medium">
+ <span className="bg-slate-100 px-2 py-0.5 rounded text-slate-700 font-normal">
  {transaction.category}
  </span>
  </div>
  </div>
  <div>
  {isRefunded ? (
- <span className="px-3 py-1 bg-rose-100 text-rose-700 text-xs font-semibold rounded-full">
+ <span className="px-3 py-1 bg-rose-100 text-rose-700 text-xs font-medium rounded-full">
  REFUNDED &amp; REVERSED
  </span>
  ) : (
- <span className="px-3 py-1 bg-emerald-100 text-emerald-700 text-xs font-semibold rounded-full">
+ <span className="px-3 py-1 bg-emerald-100 text-emerald-700 text-xs font-medium rounded-full">
  COMPLETED
  </span>
  )}
@@ -105,7 +105,7 @@ export const TransactionDetailModal: React.FC<TransactionDetailModalProps> = ({
 
  {/* Engine Multi-Rule Breakdown */}
  <div className="space-y-3">
- <div className="flex items-center space-x-2 text-slate-800 font-semibold text-sm">
+ <div className="flex items-center space-x-2 text-slate-800 font-medium text-sm">
  <Sparkles className="h-4 w-4 text-emerald-600"/>
  <span>Reward Engine Calculation Breakdown</span>
  </div>
@@ -115,18 +115,18 @@ export const TransactionDetailModal: React.FC<TransactionDetailModalProps> = ({
  {breakdowns.map((b, idx) => (
  <div key={idx} className="flex items-start justify-between text-xs pb-2 last:-0 last:pb-0">
  <div>
- <div className="font-semibold text-slate-800">{b.ruleName}</div>
+ <div className="font-medium text-slate-800">{b.ruleName}</div>
  <div className="text-slate-500 text-[11px]">{b.description}</div>
  </div>
  <div className="text-right">
  {b.calculatedAmount > 0 && (
- <div className="font-bold text-emerald-600">
+ <div className="font-semibold text-emerald-600">
  +₹{Number(b.calculatedAmount).toFixed(2)}
  {b.percentage > 0 && <span className="text-[10px] text-slate-400 ml-1">({b.percentage}%)</span>}
  </div>
  )}
  {b.calculatedPoints > 0 && (
- <div className="font-bold text-amber-600">
+ <div className="font-semibold text-amber-600">
  +{b.calculatedPoints} PTS
  </div>
  )}
@@ -143,19 +143,19 @@ export const TransactionDetailModal: React.FC<TransactionDetailModalProps> = ({
  {/* Total Reward Outcome */}
  <div className="bg-gradient-to-r from-emerald-50 to-teal-50 rounded-2xl p-4 flex items-center justify-between">
  <div>
- <span className="text-xs font-semibold text-emerald-900">Total Net Reward</span>
+ <span className="text-xs font-medium text-emerald-900">Total Net Reward</span>
  <p className="text-[11px] text-emerald-700">
  {isRefunded ? 'Original credit was automatically reversed' : 'Credited directly to wallet'}
  </p>
  </div>
  <div className="text-right">
  {cashbackReward && (
- <div className={`text-base font-extrabold ${isRefunded ? 'text-rose-600 line-through' : 'text-emerald-700'}`}>
+ <div className={`text-base font-bold ${isRefunded ? 'text-rose-600 line-through' : 'text-emerald-700'}`}>
  ₹{Number(cashbackReward.amount).toFixed(2)} Cashback
  </div>
  )}
  {pointsReward && (
- <div className={`text-xs font-semibold ${isRefunded ? 'text-rose-600 line-through' : 'text-amber-700'}`}>
+ <div className={`text-xs font-medium ${isRefunded ? 'text-rose-600 line-through' : 'text-amber-700'}`}>
  +{pointsReward.points} Points
  </div>
  )}
@@ -176,7 +176,7 @@ export const TransactionDetailModal: React.FC<TransactionDetailModalProps> = ({
  <button
  onClick={handleRefund}
  disabled={loadingRefund}
- className="w-full flex items-center justify-center space-x-2 py-3 px-4 bg-rose-600 hover:bg-rose-700 text-white font-semibold rounded-xl transition active:scale-98 disabled:opacity-50"
+ className="w-full flex items-center justify-center space-x-2 py-3 px-4 bg-rose-600 hover:bg-rose-700 text-white font-medium rounded-xl transition active:scale-98 disabled:opacity-50"
  >
  <RotateCcw className="h-4 w-4"/>
  <span>{loadingRefund ? 'Processing Refund...' : 'Refund Transaction & Reverse Reward'}</span>
@@ -184,7 +184,7 @@ export const TransactionDetailModal: React.FC<TransactionDetailModalProps> = ({
  </div>
  ) : (
  <div className="bg-rose-50 p-4 rounded-2xl text-center text-xs text-rose-800 space-y-1">
- <div className="font-semibold flex items-center justify-center space-x-1">
+ <div className="font-medium flex items-center justify-center space-x-1">
  <CheckCircle className="h-4 w-4 text-rose-600"/>
  <span>Transaction Refunded</span>
  </div>

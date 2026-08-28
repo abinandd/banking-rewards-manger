@@ -62,7 +62,7 @@ export const CustomerDashboard: React.FC<CustomerDashboardProps> = ({
  {/* Header Greeting */}
  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 gsap-fade-up">
  <div>
- <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
+ <h1 className="text-2xl sm:text-3xl font-semibold text-slate-900 tracking-tight">
  {getGreeting()}, {user.name}
  </h1>
  <p className="text-sm text-slate-500 mt-1">
@@ -72,7 +72,7 @@ export const CustomerDashboard: React.FC<CustomerDashboardProps> = ({
  <div className="flex items-center space-x-3">
  <button
  onClick={onOpenCreateTxn}
- className="flex items-center space-x-2 px-4 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-medium rounded-xl transition active:scale-95"
+ className="flex items-center space-x-2 px-4 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-normal rounded-xl transition active:scale-95"
  >
  <Plus className="h-4 w-4"/>
  <span>Make a Purchase</span>
@@ -86,7 +86,7 @@ export const CustomerDashboard: React.FC<CustomerDashboardProps> = ({
  <div className="bg-gradient-to-br from-emerald-600 to-teal-700 rounded-3xl p-6 text-white relative overflow-hidden">
  <div className="absolute top-0 right-0 -mr-8 -mt-8 w-36 h-36 bg-white/10 rounded-full blur-2xl pointer-events-none"></div>
  <div className="flex items-center justify-between">
- <span className="text-xs font-medium uppercase tracking-wider text-emerald-100">
+ <span className="text-xs font-normal uppercase tracking-wider text-emerald-100">
  Available Cashback
  </span>
  <div className="p-2 rounded-xl bg-white/10 backdrop-blur-md">
@@ -94,7 +94,7 @@ export const CustomerDashboard: React.FC<CustomerDashboardProps> = ({
  </div>
  </div>
  <div className="mt-4">
- <div className="text-3xl sm:text-4xl font-bold tracking-tight">
+ <div className="text-3xl sm:text-4xl font-semibold tracking-tight">
  ₹{wallet ? Number(wallet.cashbackBalance).toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : '0.00'}
  </div>
  <div className="flex items-center space-x-1.5 text-xs text-emerald-100 mt-2">
@@ -108,7 +108,7 @@ export const CustomerDashboard: React.FC<CustomerDashboardProps> = ({
  <div className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl p-6 text-white relative overflow-hidden">
  <div className="absolute top-0 right-0 -mr-8 -mt-8 w-36 h-36 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none"></div>
  <div className="flex items-center justify-between">
- <span className="text-xs font-medium uppercase tracking-wider text-slate-400">
+ <span className="text-xs font-normal uppercase tracking-wider text-slate-400">
  Reward Points
  </span>
  <div className="p-2 rounded-xl bg-slate-800">
@@ -116,9 +116,9 @@ export const CustomerDashboard: React.FC<CustomerDashboardProps> = ({
  </div>
  </div>
  <div className="mt-4">
- <div className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
+ <div className="text-3xl sm:text-4xl font-semibold tracking-tight text-white">
  {wallet ? Number(wallet.pointsBalance).toLocaleString('en-IN') : '0'}
- <span className="text-base font-medium text-slate-400 ml-2">PTS</span>
+ <span className="text-base font-normal text-slate-400 ml-2">PTS</span>
  </div>
  <div className="flex items-center space-x-1.5 text-xs text-slate-400 mt-2">
  <Sparkles className="h-3.5 w-3.5 text-amber-400"/>
@@ -131,10 +131,10 @@ export const CustomerDashboard: React.FC<CustomerDashboardProps> = ({
  <div className="bg-white rounded-3xl p-6 flex flex-col justify-between">
  <div>
  <div className="flex items-center justify-between">
- <span className="text-xs font-medium uppercase tracking-wider text-slate-400">
+ <span className="text-xs font-normal uppercase tracking-wider text-slate-400">
  Membership Tier
  </span>
- <span className={`px-2.5 py-1 text-xs font-semibold rounded-full ${
+ <span className={`px-2.5 py-1 text-xs font-medium rounded-full ${
  user.tier === 'PLATINUM'
  ? 'bg-purple-100 text-purple-700'
  : user.tier === 'GOLD'
@@ -145,7 +145,7 @@ export const CustomerDashboard: React.FC<CustomerDashboardProps> = ({
  </span>
  </div>
  <div className="mt-3">
- <div className="text-lg font-semibold text-slate-900">
+ <div className="text-lg font-medium text-slate-900">
  {user.tier === 'GOLD' ? '2.5% Maximum Reward Rate' : user.tier === 'PLATINUM' ? '3.5% Maximum Reward Rate' : '1.5% Standard Reward Rate'}
  </div>
  <p className="text-xs text-slate-500 mt-1">
@@ -155,7 +155,7 @@ export const CustomerDashboard: React.FC<CustomerDashboardProps> = ({
  </div>
  <button
  onClick={() => onSelectTab('tiers')}
- className="mt-4 flex items-center justify-between text-xs font-semibold text-emerald-600 hover:text-emerald-700 transition pt-3"
+ className="mt-4 flex items-center justify-between text-xs font-medium text-emerald-600 hover:text-emerald-700 transition pt-3"
  >
  <span>View Tier Privileges</span>
  <ArrowRight className="h-4 w-4"/>
@@ -167,19 +167,19 @@ export const CustomerDashboard: React.FC<CustomerDashboardProps> = ({
  <div className="bg-white rounded-3xl p-6 gsap-fade-up">
  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
  <div>
- <div className="text-xs font-medium uppercase tracking-wider text-slate-400">
+ <div className="text-xs font-normal uppercase tracking-wider text-slate-400">
  Cashback this month
  </div>
- <div className="text-2xl font-extrabold text-slate-900 mt-1">
+ <div className="text-2xl font-bold text-slate-900 mt-1">
  ₹{totalCashbackCredited.toFixed(2)}
  </div>
- <div className="text-xs font-medium text-emerald-600 mt-1 flex items-center space-x-1">
+ <div className="text-xs font-normal text-emerald-600 mt-1 flex items-center space-x-1">
  <TrendingUp className="h-3.5 w-3.5"/>
  <span>+18.4% vs last billing cycle</span>
  </div>
  </div>
  <div className="w-full sm:w-1/2">
- <div className="flex justify-between text-xs font-medium text-slate-500 mb-1.5">
+ <div className="flex justify-between text-xs font-normal text-slate-500 mb-1.5">
  <span>Monthly Target ₹500</span>
  <span>{Math.min(100, Math.round((totalCashbackCredited / 500) * 100))}%</span>
  </div>
@@ -197,12 +197,12 @@ export const CustomerDashboard: React.FC<CustomerDashboardProps> = ({
  <div className="bg-white rounded-3xl overflow-hidden gsap-fade-up">
  <div className="p-6 flex items-center justify-between">
  <div>
- <h2 className="text-lg font-semibold text-slate-900">Recent Transactions &amp; Audit Trail</h2>
+ <h2 className="text-lg font-medium text-slate-900">Recent Transactions &amp; Audit Trail</h2>
  <p className="text-xs text-slate-500">Click any transaction to inspect exact multi-rule calculations or trigger a refund reversal</p>
  </div>
  <button
  onClick={() => onSelectTab('transactions')}
- className="text-xs font-semibold text-emerald-600 hover:text-emerald-700 flex items-center space-x-1"
+ className="text-xs font-medium text-emerald-600 hover:text-emerald-700 flex items-center space-x-1"
  >
  <span>View All</span>
  <ArrowRight className="h-4 w-4"/>
@@ -234,16 +234,16 @@ export const CustomerDashboard: React.FC<CustomerDashboardProps> = ({
  </div>
  <div>
  <div className="flex items-center space-x-2">
- <span className="font-semibold text-slate-900 text-sm">{txn.merchantName}</span>
- <span className="text-[11px] px-2 py-0.5 rounded-md bg-slate-100 text-slate-600 font-medium">
+ <span className="font-medium text-slate-900 text-sm">{txn.merchantName}</span>
+ <span className="text-[11px] px-2 py-0.5 rounded-md bg-slate-100 text-slate-600 font-normal">
  {txn.category}
  </span>
  {isRefunded ? (
- <span className="text-[11px] px-2 py-0.5 rounded-md bg-rose-100 text-rose-700 font-semibold">
+ <span className="text-[11px] px-2 py-0.5 rounded-md bg-rose-100 text-rose-700 font-medium">
  REFUNDED
  </span>
  ) : (
- <span className="text-[11px] px-2 py-0.5 rounded-md bg-emerald-100 text-emerald-700 font-semibold">
+ <span className="text-[11px] px-2 py-0.5 rounded-md bg-emerald-100 text-emerald-700 font-medium">
  COMPLETED
  </span>
  )}
@@ -257,11 +257,11 @@ export const CustomerDashboard: React.FC<CustomerDashboardProps> = ({
  </div>
 
  <div className="text-right">
- <div className="text-sm font-extrabold text-slate-900">
+ <div className="text-sm font-bold text-slate-900">
  ₹{Number(txn.amount).toLocaleString('en-IN', { minimumFractionDigits: 2 })}
  </div>
  {cashbackReward && (
- <div className={`text-xs font-semibold mt-0.5 ${
+ <div className={`text-xs font-medium mt-0.5 ${
  isRefunded ? 'text-rose-500 line-through' : 'text-emerald-600'
  }`}>
  +{Number(cashbackReward.amount).toFixed(2)} Cashback

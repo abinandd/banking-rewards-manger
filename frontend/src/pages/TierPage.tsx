@@ -66,7 +66,7 @@ export const TierPage: React.FC<TierPageProps> = ({ user, wallet, onUpgradeTier 
  return (
  <div ref={containerRef} className="space-y-6">
  <div className="gsap-fade-up">
- <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
+ <h1 className="text-2xl sm:text-3xl font-semibold text-slate-900 tracking-tight">
  Rewards Tier &amp; Membership Status
  </h1>
  <p className="text-sm text-slate-500 mt-1">
@@ -82,9 +82,9 @@ export const TierPage: React.FC<TierPageProps> = ({ user, wallet, onUpgradeTier 
  <div>
  <div className="flex items-center space-x-2 text-amber-400">
  <Award className="h-5 w-5"/>
- <span className="text-xs font-semibold uppercase tracking-widest">Active Membership</span>
+ <span className="text-xs font-medium uppercase tracking-widest">Active Membership</span>
  </div>
- <div className="text-3xl sm:text-4xl font-extrabold mt-2 tracking-tight">
+ <div className="text-3xl sm:text-4xl font-bold mt-2 tracking-tight">
  {user.tier} TIER MEMBER
  </div>
  <p className="text-xs text-slate-400 mt-1">
@@ -93,7 +93,7 @@ export const TierPage: React.FC<TierPageProps> = ({ user, wallet, onUpgradeTier 
  </div>
 
  <div className="bg-white/5 backdrop-blur-md p-5 rounded-2xl -white/10 w-full md:w-80">
- <div className="flex justify-between text-xs font-semibold text-slate-300 mb-2">
+ <div className="flex justify-between text-xs font-medium text-slate-300 mb-2">
  <span>Tier Progress</span>
  <span>{currentPoints} / {targetPoints} PTS</span>
  </div>
@@ -125,9 +125,9 @@ export const TierPage: React.FC<TierPageProps> = ({ user, wallet, onUpgradeTier 
  >
  <div>
  <div className="flex items-center justify-between">
- <span className="text-lg font-extrabold text-slate-900">{t.name}</span>
+ <span className="text-lg font-bold text-slate-900">{t.name}</span>
  {isCurrent && (
- <span className="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-xs font-semibold flex items-center space-x-1">
+ <span className="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-xs font-medium flex items-center space-x-1">
  <CheckCircle2 className="h-3.5 w-3.5"/>
  <span>Current</span>
  </span>
@@ -135,8 +135,8 @@ export const TierPage: React.FC<TierPageProps> = ({ user, wallet, onUpgradeTier 
  </div>
 
  <div className="mt-4 p-4 rounded-2xl bg-slate-50 space-y-1">
- <div className="text-sm font-bold text-emerald-700">{t.cashbackBonus}</div>
- <div className="text-xs font-semibold text-slate-600">{t.multiplier}</div>
+ <div className="text-sm font-semibold text-emerald-700">{t.cashbackBonus}</div>
+ <div className="text-xs font-medium text-slate-600">{t.multiplier}</div>
  </div>
 
  <div className="mt-5 space-y-2.5">
@@ -154,12 +154,12 @@ export const TierPage: React.FC<TierPageProps> = ({ user, wallet, onUpgradeTier 
  <button
  onClick={() => handleUpgrade(t.name)}
  disabled={loading}
- className="w-full py-2.5 bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold rounded-xl transition active:scale-95 disabled:opacity-50"
+ className="w-full py-2.5 bg-slate-900 hover:bg-slate-800 text-white text-xs font-medium rounded-xl transition active:scale-95 disabled:opacity-50"
  >
  Switch to {t.name}
  </button>
  ) : (
- <div className="text-center text-xs font-semibold text-emerald-600 py-1">
+ <div className="text-center text-xs font-medium text-emerald-600 py-1">
  ✓ Active on this account
  </div>
  )}

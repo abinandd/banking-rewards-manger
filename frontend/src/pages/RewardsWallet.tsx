@@ -34,7 +34,7 @@ export const RewardsWallet: React.FC<RewardsWalletProps> = ({ user: _user, walle
  return (
  <div ref={containerRef} className="space-y-6">
  <div className="gsap-fade-up">
- <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
+ <h1 className="text-2xl sm:text-3xl font-semibold text-slate-900 tracking-tight">
  Rewards Wallet &amp; Ledger
  </h1>
  <p className="text-sm text-slate-500 mt-1">
@@ -47,10 +47,10 @@ export const RewardsWallet: React.FC<RewardsWalletProps> = ({ user: _user, walle
  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 gsap-fade-up">
  <div className="bg-white rounded-3xl p-6 flex items-center justify-between">
  <div>
- <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+ <span className="text-xs font-medium uppercase tracking-wider text-slate-400">
  Available Cashback Balance
  </span>
- <div className="text-3xl font-extrabold text-emerald-600 mt-2">
+ <div className="text-3xl font-bold text-emerald-600 mt-2">
  ₹{wallet ? Number(wallet.cashbackBalance).toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : '0.00'}
  </div>
  <p className="text-xs text-slate-400 mt-1">Directly redeemable to primary bank account</p>
@@ -62,11 +62,11 @@ export const RewardsWallet: React.FC<RewardsWalletProps> = ({ user: _user, walle
 
  <div className="bg-white rounded-3xl p-6 flex items-center justify-between">
  <div>
- <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+ <span className="text-xs font-medium uppercase tracking-wider text-slate-400">
  Reward Points Balance
  </span>
- <div className="text-3xl font-extrabold text-slate-900 mt-2">
- {wallet ? Number(wallet.pointsBalance).toLocaleString('en-IN') : '0'} <span className="text-lg font-medium text-slate-400">PTS</span>
+ <div className="text-3xl font-bold text-slate-900 mt-2">
+ {wallet ? Number(wallet.pointsBalance).toLocaleString('en-IN') : '0'} <span className="text-lg font-normal text-slate-400">PTS</span>
  </div>
  <p className="text-xs text-slate-400 mt-1">Valid for gift cards, merchandise, and air miles</p>
  </div>
@@ -80,7 +80,7 @@ export const RewardsWallet: React.FC<RewardsWalletProps> = ({ user: _user, walle
  <div className="bg-white rounded-3xl overflow-hidden gsap-fade-up">
  <div className="p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
  <div>
- <h2 className="text-lg font-semibold text-slate-900">Reward Activity History</h2>
+ <h2 className="text-lg font-medium text-slate-900">Reward Activity History</h2>
  <p className="text-xs text-slate-500">Immutable ledger records showing status, type, and source</p>
  </div>
 
@@ -89,7 +89,7 @@ export const RewardsWallet: React.FC<RewardsWalletProps> = ({ user: _user, walle
  <button
  key={filter}
  onClick={() => setFilterType(filter)}
- className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
+ className={`px-3 py-1.5 rounded-lg text-xs font-medium transition ${
  filterType === filter
  ? 'bg-slate-900 text-white '
  : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
@@ -130,8 +130,8 @@ export const RewardsWallet: React.FC<RewardsWalletProps> = ({ user: _user, walle
  </div>
  <div>
  <div className="flex items-center space-x-2">
- <span className="font-semibold text-slate-900 text-sm">{r.description}</span>
- <span className={`text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-md font-bold ${
+ <span className="font-medium text-slate-900 text-sm">{r.description}</span>
+ <span className={`text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-md font-semibold ${
  r.status === 'CREDITED'
  ? 'bg-emerald-100 text-emerald-800'
  : r.status === 'REVERSED'
@@ -152,19 +152,19 @@ export const RewardsWallet: React.FC<RewardsWalletProps> = ({ user: _user, walle
 
  <div className="text-right">
  {isCashback ? (
- <div className={`text-base font-extrabold ${
+ <div className={`text-base font-bold ${
  isReversed ? 'text-rose-600' : 'text-emerald-600'
  }`}>
  {amountNum < 0 ? `- ₹${Math.abs(amountNum).toFixed(2)}` : `+ ₹${amountNum.toFixed(2)}`}
  </div>
  ) : (
- <div className={`text-base font-extrabold ${
+ <div className={`text-base font-bold ${
  isReversed ? 'text-rose-600' : 'text-amber-600'
  }`}>
  {r.points < 0 ? `${r.points} PTS` : `+${r.points} PTS`}
  </div>
  )}
- <span className="text-[11px] font-medium text-slate-400 uppercase tracking-wider">
+ <span className="text-[11px] font-normal text-slate-400 uppercase tracking-wider">
  {r.type}
  </span>
  </div>

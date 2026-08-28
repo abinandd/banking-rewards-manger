@@ -70,7 +70,7 @@ export const CreateTransactionModal: React.FC<CreateTransactionModalProps> = ({
  <ShoppingBag className="h-6 w-6"/>
  </div>
  <div>
- <h3 className="text-lg font-semibold">Simulate Transaction</h3>
+ <h3 className="text-lg font-medium">Simulate Transaction</h3>
  <p className="text-xs text-slate-400">Trigger Reward Rules for {user.name} ({user.tier})</p>
  </div>
  </div>
@@ -81,7 +81,7 @@ export const CreateTransactionModal: React.FC<CreateTransactionModalProps> = ({
 
  <form onSubmit={handleSubmit} className="p-6 space-y-4">
  <div>
- <label className="block text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1.5">
+ <label className="block text-xs font-medium uppercase tracking-wider text-slate-500 mb-1.5">
  Quick Merchant Presets
  </label>
  <div className="flex flex-wrap gap-2">
@@ -94,9 +94,9 @@ export const CreateTransactionModal: React.FC<CreateTransactionModalProps> = ({
  setCategory(p.category);
  setDescription(`${p.name} ${p.category} purchase`);
  }}
- className={`px-2.5 py-1 text-xs rounded-lg font-medium transition ${
+ className={`px-2.5 py-1 text-xs rounded-lg font-normal transition ${
  merchantName === p.name
- ? 'bg-emerald-50 text-emerald-800 font-semibold'
+ ? 'bg-emerald-50 text-emerald-800 font-medium'
  : 'bg-slate-50 text-slate-600 hover:bg-slate-100'
  }`}
  >
@@ -107,7 +107,7 @@ export const CreateTransactionModal: React.FC<CreateTransactionModalProps> = ({
  </div>
 
  <div>
- <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1">
+ <label className="block text-xs font-medium uppercase tracking-wider text-slate-700 mb-1">
  Merchant Name
  </label>
  <input
@@ -122,11 +122,11 @@ export const CreateTransactionModal: React.FC<CreateTransactionModalProps> = ({
 
  <div className="grid grid-cols-2 gap-3">
  <div>
- <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1">
+ <label className="block text-xs font-medium uppercase tracking-wider text-slate-700 mb-1">
  Category
  </label>
  <select
- className="w-full px-3 py-2.5 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 text-sm font-medium bg-white"
+ className="w-full px-3 py-2.5 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 text-sm font-normal bg-white"
  value={category}
  onChange={(e) => setCategory(e.target.value)}
  >
@@ -141,7 +141,7 @@ export const CreateTransactionModal: React.FC<CreateTransactionModalProps> = ({
  </div>
 
  <div>
- <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1">
+ <label className="block text-xs font-medium uppercase tracking-wider text-slate-700 mb-1">
  Amount (₹)
  </label>
  <input
@@ -149,7 +149,7 @@ export const CreateTransactionModal: React.FC<CreateTransactionModalProps> = ({
  step="0.01"
  min="1"
  required
- className="w-full px-4 py-2.5 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 text-sm font-semibold"
+ className="w-full px-4 py-2.5 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 text-sm font-medium"
  value={amount}
  onChange={(e) => setAmount(e.target.value)}
  placeholder="2000"
@@ -158,7 +158,7 @@ export const CreateTransactionModal: React.FC<CreateTransactionModalProps> = ({
  </div>
 
  <div>
- <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1">
+ <label className="block text-xs font-medium uppercase tracking-wider text-slate-700 mb-1">
  Description / Notes
  </label>
  <input
@@ -174,7 +174,7 @@ export const CreateTransactionModal: React.FC<CreateTransactionModalProps> = ({
  <button
  type="submit"
  disabled={loading}
- className="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-xl transition disabled:opacity-50 flex items-center justify-center space-x-2"
+ className="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-medium rounded-xl transition disabled:opacity-50 flex items-center justify-center space-x-2"
  >
  <span>{loading ? 'Executing...' : 'Process Purchase & Calculate Cashback'}</span>
  <ArrowRight className="h-4 w-4"/>

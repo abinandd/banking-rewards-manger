@@ -105,11 +105,11 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
  {/* Header */}
  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
  <div>
- <div className="flex items-center space-x-2 text-amber-600 text-xs font-semibold uppercase tracking-wider">
+ <div className="flex items-center space-x-2 text-amber-600 text-xs font-medium uppercase tracking-wider">
  <Sliders className="h-4 w-4"/>
  <span>Financial Controls &amp; Engine Management</span>
  </div>
- <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight mt-1">
+ <h1 className="text-2xl sm:text-3xl font-semibold text-slate-900 tracking-tight mt-1">
  RewardsBank Admin Console
  </h1>
  </div>
@@ -118,42 +118,42 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
  {/* Top Metrics Cards */}
  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
  <div className="bg-white rounded-3xl p-6">
- <div className="flex items-center justify-between text-slate-400 text-xs font-semibold uppercase tracking-wider">
+ <div className="flex items-center justify-between text-slate-400 text-xs font-medium uppercase tracking-wider">
  <span>Total Customers</span>
  <Users className="h-5 w-5 text-indigo-500"/>
  </div>
- <div className="text-3xl font-extrabold text-slate-900 mt-2">{users.length}</div>
+ <div className="text-3xl font-bold text-slate-900 mt-2">{users.length}</div>
  <div className="text-xs text-slate-500 mt-1">{referrals.length} referrals processed</div>
  </div>
 
  <div className="bg-white rounded-3xl p-6">
- <div className="flex items-center justify-between text-slate-400 text-xs font-semibold uppercase tracking-wider">
+ <div className="flex items-center justify-between text-slate-400 text-xs font-medium uppercase tracking-wider">
  <span>Total Transaction Volume</span>
  <ArrowLeftRight className="h-5 w-5 text-blue-500"/>
  </div>
- <div className="text-3xl font-extrabold text-slate-900 mt-2">
+ <div className="text-3xl font-bold text-slate-900 mt-2">
  ₹{totalVolume.toLocaleString('en-IN', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}
  </div>
  <div className="text-xs text-slate-500 mt-1">{transactions.length} total orders</div>
  </div>
 
  <div className="bg-white rounded-3xl p-6">
- <div className="flex items-center justify-between text-slate-400 text-xs font-semibold uppercase tracking-wider">
+ <div className="flex items-center justify-between text-slate-400 text-xs font-medium uppercase tracking-wider">
  <span>Cashback Disbursed</span>
  <Wallet className="h-5 w-5 text-emerald-500"/>
  </div>
- <div className="text-3xl font-extrabold text-emerald-600 mt-2">
+ <div className="text-3xl font-bold text-emerald-600 mt-2">
  ₹{totalCashbackDisbursed.toLocaleString('en-IN', { minimumFractionDigits: 2 })}
  </div>
  <div className="text-xs text-slate-500 mt-1">Ledger verified</div>
  </div>
 
  <div className="bg-white rounded-3xl p-6">
- <div className="flex items-center justify-between text-slate-400 text-xs font-semibold uppercase tracking-wider">
+ <div className="flex items-center justify-between text-slate-400 text-xs font-medium uppercase tracking-wider">
  <span>Points Accrued</span>
  <TrendingUp className="h-5 w-5 text-amber-500"/>
  </div>
- <div className="text-3xl font-extrabold text-slate-900 mt-2">
+ <div className="text-3xl font-bold text-slate-900 mt-2">
  {totalPointsDisbursed.toLocaleString('en-IN')} <span className="text-sm font-normal text-slate-400">PTS</span>
  </div>
  <div className="text-xs text-slate-500 mt-1">Active across tiers</div>
@@ -165,7 +165,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
  <div className="bg-white rounded-3xl overflow-hidden">
  <div className="p-6 flex items-center justify-between">
  <div>
- <h2 className="text-lg font-semibold text-slate-900 flex items-center space-x-2">
+ <h2 className="text-lg font-medium text-slate-900 flex items-center space-x-2">
  <Sliders className="h-5 w-5 text-emerald-600"/>
  <span>Dynamic Reward Rules Engine</span>
  </h2>
@@ -173,7 +173,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
  </div>
  <button
  onClick={() => setShowRuleModal(true)}
- className="flex items-center space-x-1.5 px-3.5 py-2 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-semibold"
+ className="flex items-center space-x-1.5 px-3.5 py-2 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-medium"
  >
  <Plus className="h-4 w-4"/>
  <span>Create Rule</span>
@@ -184,25 +184,25 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
  <table className="w-full text-left text-xs">
  <thead className="bg-slate-50 text-slate-500 uppercase tracking-wider">
  <tr>
- <th className="py-3.5 px-4 font-semibold">Category</th>
- <th className="py-3.5 px-4 font-semibold">Merchant Partner</th>
- <th className="py-3.5 px-4 font-semibold">Reward Value</th>
- <th className="py-3.5 px-4 font-semibold">Max Cap</th>
- <th className="py-3.5 px-4 font-semibold">Status</th>
- <th className="py-3.5 px-4 font-semibold text-right">Actions</th>
+ <th className="py-3.5 px-4 font-medium">Category</th>
+ <th className="py-3.5 px-4 font-medium">Merchant Partner</th>
+ <th className="py-3.5 px-4 font-medium">Reward Value</th>
+ <th className="py-3.5 px-4 font-medium">Max Cap</th>
+ <th className="py-3.5 px-4 font-medium">Status</th>
+ <th className="py-3.5 px-4 font-medium text-right">Actions</th>
  </tr>
  </thead>
  <tbody className="divide-y divide-slate-100">
  {rules.map((r) => (
  <tr key={r.id} className="hover:bg-slate-50/60">
- <td className="py-3.5 px-4 font-semibold text-slate-900">{r.category}</td>
+ <td className="py-3.5 px-4 font-medium text-slate-900">{r.category}</td>
  <td className="py-3.5 px-4 text-slate-700">{r.merchant || 'ALL'}</td>
- <td className="py-3.5 px-4 font-bold text-emerald-600">
+ <td className="py-3.5 px-4 font-semibold text-emerald-600">
  {r.rewardType === 'CASHBACK' ? `${r.rewardValue}% Cashback` : `${r.rewardValue}x Points`}
  </td>
  <td className="py-3.5 px-4 text-slate-600">{r.maxReward ? `₹${r.maxReward}` : 'No Cap'}</td>
  <td className="py-3.5 px-4">
- <span className={`px-2.5 py-0.5 rounded-full text-[11px] font-semibold ${
+ <span className={`px-2.5 py-0.5 rounded-full text-[11px] font-medium ${
  r.active ? 'bg-emerald-100 text-emerald-800' : 'bg-slate-100 text-slate-600'
  }`}>
  {r.active ? 'Active' : 'Disabled'}
@@ -239,7 +239,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
  <div className="bg-white rounded-3xl overflow-hidden">
  <div className="p-6 flex items-center justify-between">
  <div>
- <h2 className="text-lg font-semibold text-slate-900 flex items-center space-x-2">
+ <h2 className="text-lg font-medium text-slate-900 flex items-center space-x-2">
  <Flame className="h-5 w-5 text-amber-500"/>
  <span>Active Campaign Promotions</span>
  </h2>
@@ -247,7 +247,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
  </div>
  <button
  onClick={() => setShowCampaignModal(true)}
- className="flex items-center space-x-1.5 px-3.5 py-2 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-semibold"
+ className="flex items-center space-x-1.5 px-3.5 py-2 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-medium"
  >
  <Plus className="h-4 w-4"/>
  <span>Launch Campaign</span>
@@ -258,28 +258,28 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
  <table className="w-full text-left text-xs">
  <thead className="bg-slate-50 text-slate-500 uppercase tracking-wider">
  <tr>
- <th className="py-3.5 px-4 font-semibold">Campaign Name</th>
- <th className="py-3.5 px-4 font-semibold">Category / Target</th>
- <th className="py-3.5 px-4 font-semibold">Booster Benefit</th>
- <th className="py-3.5 px-4 font-semibold">Validity Window</th>
- <th className="py-3.5 px-4 font-semibold">Status</th>
- <th className="py-3.5 px-4 font-semibold text-right">Actions</th>
+ <th className="py-3.5 px-4 font-medium">Campaign Name</th>
+ <th className="py-3.5 px-4 font-medium">Category / Target</th>
+ <th className="py-3.5 px-4 font-medium">Booster Benefit</th>
+ <th className="py-3.5 px-4 font-medium">Validity Window</th>
+ <th className="py-3.5 px-4 font-medium">Status</th>
+ <th className="py-3.5 px-4 font-medium text-right">Actions</th>
  </tr>
  </thead>
  <tbody className="divide-y divide-slate-100">
  {campaigns.map((c) => (
  <tr key={c.id} className="hover:bg-slate-50/60">
  <td className="py-3.5 px-4">
- <div className="font-semibold text-slate-900">{c.name}</div>
+ <div className="font-medium text-slate-900">{c.name}</div>
  <div className="text-slate-400 text-[11px]">{c.description}</div>
  </td>
  <td className="py-3.5 px-4 text-slate-700">{c.category} • {c.merchant || 'ALL'}</td>
- <td className="py-3.5 px-4 font-bold text-emerald-600">
+ <td className="py-3.5 px-4 font-semibold text-emerald-600">
  +{c.bonusPercentage}% Extra {c.bonusPoints ? `& +${c.bonusPoints} PTS` : ''}
  </td>
  <td className="py-3.5 px-4 text-slate-500">{c.startDate} to {c.endDate}</td>
  <td className="py-3.5 px-4">
- <span className={`px-2.5 py-0.5 rounded-full text-[11px] font-semibold ${
+ <span className={`px-2.5 py-0.5 rounded-full text-[11px] font-medium ${
  c.active ? 'bg-emerald-100 text-emerald-800' : 'bg-slate-100 text-slate-600'
  }`}>
  {c.active ? 'Live' : 'Paused'}
@@ -312,7 +312,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
  <div className="bg-white rounded-3xl overflow-hidden">
  <div className="p-6 flex items-center justify-between">
  <div>
- <h2 className="text-lg font-semibold text-slate-900 flex items-center space-x-2">
+ <h2 className="text-lg font-medium text-slate-900 flex items-center space-x-2">
  <ArrowLeftRight className="h-5 w-5 text-blue-600"/>
  <span>Transaction &amp; Reversal Ledger</span>
  </h2>
@@ -324,12 +324,12 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
  <table className="w-full text-left text-xs">
  <thead className="bg-slate-50 text-slate-500 uppercase tracking-wider">
  <tr>
- <th className="py-3.5 px-4 font-semibold">TXN ID</th>
- <th className="py-3.5 px-4 font-semibold">User</th>
- <th className="py-3.5 px-4 font-semibold">Merchant / Category</th>
- <th className="py-3.5 px-4 font-semibold">Amount</th>
- <th className="py-3.5 px-4 font-semibold">Status</th>
- <th className="py-3.5 px-4 font-semibold text-right">Action</th>
+ <th className="py-3.5 px-4 font-medium">TXN ID</th>
+ <th className="py-3.5 px-4 font-medium">User</th>
+ <th className="py-3.5 px-4 font-medium">Merchant / Category</th>
+ <th className="py-3.5 px-4 font-medium">Amount</th>
+ <th className="py-3.5 px-4 font-medium">Status</th>
+ <th className="py-3.5 px-4 font-medium text-right">Action</th>
  </tr>
  </thead>
  <tbody className="divide-y divide-slate-100">
@@ -338,20 +338,20 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
  const isRefunded = t.status === 'REFUNDED';
  return (
  <tr key={t.id} className="hover:bg-slate-50/60">
- <td className="py-3.5 px-4 font-semibold text-slate-900">TXN-{t.id}</td>
+ <td className="py-3.5 px-4 font-medium text-slate-900">TXN-{t.id}</td>
  <td className="py-3.5 px-4">
- <div className="font-semibold text-slate-900">{userObj?.name || `User #${t.userId}`}</div>
+ <div className="font-medium text-slate-900">{userObj?.name || `User #${t.userId}`}</div>
  <div className="text-[11px] text-slate-400">{userObj?.tier || 'SILVER'}</div>
  </td>
  <td className="py-3.5 px-4">
- <div className="font-medium text-slate-800">{t.merchantName}</div>
+ <div className="font-normal text-slate-800">{t.merchantName}</div>
  <div className="text-[11px] text-slate-400">{t.category}</div>
  </td>
- <td className="py-3.5 px-4 font-bold text-slate-900">
+ <td className="py-3.5 px-4 font-semibold text-slate-900">
  ₹{Number(t.amount).toFixed(2)}
  </td>
  <td className="py-3.5 px-4">
- <span className={`px-2.5 py-0.5 rounded-full text-[11px] font-semibold ${
+ <span className={`px-2.5 py-0.5 rounded-full text-[11px] font-medium ${
  isRefunded ? 'bg-rose-100 text-rose-800' : 'bg-emerald-100 text-emerald-800'
  }`}>
  {t.status}
@@ -361,12 +361,12 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
  {!isRefunded ? (
  <button
  onClick={() => onRefundTxn(t.id)}
- className="px-3 py-1 bg-rose-50 hover:bg-rose-100 text-rose-700 font-semibold rounded-lg text-xs transition"
+ className="px-3 py-1 bg-rose-50 hover:bg-rose-100 text-rose-700 font-medium rounded-lg text-xs transition"
  >
  Refund &amp; Reverse
  </button>
  ) : (
- <span className="text-[11px] font-medium text-slate-400">Reversed</span>
+ <span className="text-[11px] font-normal text-slate-400">Reversed</span>
  )}
  </td>
  </tr>
@@ -383,7 +383,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
  <div className="bg-white rounded-3xl overflow-hidden">
  <div className="p-6 flex items-center justify-between">
  <div>
- <h2 className="text-lg font-semibold text-slate-900 flex items-center space-x-2">
+ <h2 className="text-lg font-medium text-slate-900 flex items-center space-x-2">
  <Users className="h-5 w-5 text-indigo-600"/>
  <span>Customer Accounts</span>
  </h2>
@@ -391,7 +391,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
  </div>
  <button
  onClick={() => setShowUserModal(true)}
- className="flex items-center space-x-1.5 px-3.5 py-2 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-semibold"
+ className="flex items-center space-x-1.5 px-3.5 py-2 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-medium"
  >
  <Plus className="h-4 w-4"/>
  <span>Register User</span>
@@ -402,20 +402,20 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
  <table className="w-full text-left text-xs">
  <thead className="bg-slate-50 text-slate-500 uppercase tracking-wider">
  <tr>
- <th className="py-3.5 px-4 font-semibold">User</th>
- <th className="py-3.5 px-4 font-semibold">Email</th>
- <th className="py-3.5 px-4 font-semibold">Tier</th>
- <th className="py-3.5 px-4 font-semibold">Referral Code</th>
- <th className="py-3.5 px-4 font-semibold">Joined</th>
+ <th className="py-3.5 px-4 font-medium">User</th>
+ <th className="py-3.5 px-4 font-medium">Email</th>
+ <th className="py-3.5 px-4 font-medium">Tier</th>
+ <th className="py-3.5 px-4 font-medium">Referral Code</th>
+ <th className="py-3.5 px-4 font-medium">Joined</th>
  </tr>
  </thead>
  <tbody className="divide-y divide-slate-100">
  {users.map((u) => (
  <tr key={u.id} className="hover:bg-slate-50/60">
- <td className="py-3.5 px-4 font-semibold text-slate-900">{u.name}</td>
+ <td className="py-3.5 px-4 font-medium text-slate-900">{u.name}</td>
  <td className="py-3.5 px-4 text-slate-600">{u.email}</td>
  <td className="py-3.5 px-4">
- <span className={`px-2.5 py-0.5 rounded-full text-[11px] font-semibold ${
+ <span className={`px-2.5 py-0.5 rounded-full text-[11px] font-medium ${
  u.tier === 'PLATINUM'
  ? 'bg-purple-100 text-purple-800'
  : u.tier === 'GOLD'
@@ -425,7 +425,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
  {u.tier}
  </span>
  </td>
- <td className="py-3.5 px-4 font-mono font-semibold text-slate-700">{u.referralCode}</td>
+ <td className="py-3.5 px-4 font-mono font-medium text-slate-700">{u.referralCode}</td>
  <td className="py-3.5 px-4 text-slate-400">{new Date(u.createdAt).toLocaleDateString()}</td>
  </tr>
  ))}
@@ -439,10 +439,10 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
  {showRuleModal && (
  <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
  <div className="bg-white rounded-3xl max-w-md w-full p-6 space-y-4">
- <h3 className="text-lg font-semibold text-slate-900">Create Reward Rule</h3>
+ <h3 className="text-lg font-medium text-slate-900">Create Reward Rule</h3>
  <div className="space-y-3 text-xs">
  <div>
- <label className="font-semibold text-slate-700 block mb-1">Category</label>
+ <label className="font-medium text-slate-700 block mb-1">Category</label>
  <select
  className="w-full p-2.5 rounded-xl"
  value={newRule.category}
@@ -458,7 +458,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
  </div>
 
  <div>
- <label className="font-semibold text-slate-700 block mb-1">Merchant Partner</label>
+ <label className="font-medium text-slate-700 block mb-1">Merchant Partner</label>
  <input
  type="text"
  className="w-full p-2.5 rounded-xl"
@@ -470,20 +470,20 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
 
  <div className="grid grid-cols-2 gap-3">
  <div>
- <label className="font-semibold text-slate-700 block mb-1">Reward Value (%)</label>
+ <label className="font-medium text-slate-700 block mb-1">Reward Value (%)</label>
  <input
  type="number"
  step="0.1"
- className="w-full p-2.5 rounded-xl font-semibold"
+ className="w-full p-2.5 rounded-xl font-medium"
  value={newRule.rewardValue}
  onChange={(e) => setNewRule({ ...newRule, rewardValue: Number(e.target.value) })}
  />
  </div>
  <div>
- <label className="font-semibold text-slate-700 block mb-1">Max Cap (₹)</label>
+ <label className="font-medium text-slate-700 block mb-1">Max Cap (₹)</label>
  <input
  type="number"
- className="w-full p-2.5 rounded-xl font-semibold"
+ className="w-full p-2.5 rounded-xl font-medium"
  value={newRule.maxReward || ''}
  onChange={(e) => setNewRule({ ...newRule, maxReward: Number(e.target.value) })}
  placeholder="200"
@@ -495,7 +495,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
  <div className="flex justify-end space-x-2 pt-3">
  <button
  onClick={() => setShowRuleModal(false)}
- className="px-4 py-2 text-xs font-semibold text-slate-500 hover:bg-slate-100 rounded-xl"
+ className="px-4 py-2 text-xs font-medium text-slate-500 hover:bg-slate-100 rounded-xl"
  >
  Cancel
  </button>
@@ -504,7 +504,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
  await onCreateRule(newRule);
  setShowRuleModal(false);
  }}
- className="px-4 py-2 text-xs font-semibold bg-emerald-600 text-white rounded-xl"
+ className="px-4 py-2 text-xs font-medium bg-emerald-600 text-white rounded-xl"
  >
  Save Rule
  </button>
@@ -517,10 +517,10 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
  {showCampaignModal && (
  <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
  <div className="bg-white rounded-3xl max-w-md w-full p-6 space-y-4">
- <h3 className="text-lg font-semibold text-slate-900">Launch Campaign Booster</h3>
+ <h3 className="text-lg font-medium text-slate-900">Launch Campaign Booster</h3>
  <div className="space-y-3 text-xs">
  <div>
- <label className="font-semibold text-slate-700 block mb-1">Campaign Name</label>
+ <label className="font-medium text-slate-700 block mb-1">Campaign Name</label>
  <input
  type="text"
  className="w-full p-2.5 rounded-xl"
@@ -530,7 +530,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
  </div>
 
  <div>
- <label className="font-semibold text-slate-700 block mb-1">Description</label>
+ <label className="font-medium text-slate-700 block mb-1">Description</label>
  <input
  type="text"
  className="w-full p-2.5 rounded-xl"
@@ -541,7 +541,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
 
  <div className="grid grid-cols-2 gap-3">
  <div>
- <label className="font-semibold text-slate-700 block mb-1">Category</label>
+ <label className="font-medium text-slate-700 block mb-1">Category</label>
  <select
  className="w-full p-2.5 rounded-xl"
  value={newCampaign.category}
@@ -555,11 +555,11 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
  </select>
  </div>
  <div>
- <label className="font-semibold text-slate-700 block mb-1">Bonus Cashback (%)</label>
+ <label className="font-medium text-slate-700 block mb-1">Bonus Cashback (%)</label>
  <input
  type="number"
  step="0.5"
- className="w-full p-2.5 rounded-xl font-semibold"
+ className="w-full p-2.5 rounded-xl font-medium"
  value={newCampaign.bonusPercentage}
  onChange={(e) => setNewCampaign({ ...newCampaign, bonusPercentage: Number(e.target.value) })}
  />
@@ -570,7 +570,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
  <div className="flex justify-end space-x-2 pt-3">
  <button
  onClick={() => setShowCampaignModal(false)}
- className="px-4 py-2 text-xs font-semibold text-slate-500 hover:bg-slate-100 rounded-xl"
+ className="px-4 py-2 text-xs font-medium text-slate-500 hover:bg-slate-100 rounded-xl"
  >
  Cancel
  </button>
@@ -579,7 +579,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
  await onCreateCampaign(newCampaign);
  setShowCampaignModal(false);
  }}
- className="px-4 py-2 text-xs font-semibold bg-amber-600 text-white rounded-xl"
+ className="px-4 py-2 text-xs font-medium bg-amber-600 text-white rounded-xl"
  >
  Launch Campaign
  </button>
@@ -592,10 +592,10 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
  {showUserModal && (
  <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
  <div className="bg-white rounded-3xl max-w-md w-full p-6 space-y-4">
- <h3 className="text-lg font-semibold text-slate-900">Register New Customer</h3>
+ <h3 className="text-lg font-medium text-slate-900">Register New Customer</h3>
  <div className="space-y-3 text-xs">
  <div>
- <label className="font-semibold text-slate-700 block mb-1">Full Name</label>
+ <label className="font-medium text-slate-700 block mb-1">Full Name</label>
  <input
  type="text"
  className="w-full p-2.5 rounded-xl"
@@ -606,7 +606,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
  </div>
 
  <div>
- <label className="font-semibold text-slate-700 block mb-1">Email Address</label>
+ <label className="font-medium text-slate-700 block mb-1">Email Address</label>
  <input
  type="email"
  className="w-full p-2.5 rounded-xl"
@@ -617,9 +617,9 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
  </div>
 
  <div>
- <label className="font-semibold text-slate-700 block mb-1">Loyalty Tier</label>
+ <label className="font-medium text-slate-700 block mb-1">Loyalty Tier</label>
  <select
- className="w-full p-2.5 rounded-xl font-semibold"
+ className="w-full p-2.5 rounded-xl font-medium"
  value={userTier}
  onChange={(e) => setUserTier(e.target.value)}
  >
@@ -633,7 +633,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
  <div className="flex justify-end space-x-2 pt-3">
  <button
  onClick={() => setShowUserModal(false)}
- className="px-4 py-2 text-xs font-semibold text-slate-500 hover:bg-slate-100 rounded-xl"
+ className="px-4 py-2 text-xs font-medium text-slate-500 hover:bg-slate-100 rounded-xl"
  >
  Cancel
  </button>
@@ -644,7 +644,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
  setUserName('');
  setUserEmail('');
  }}
- className="px-4 py-2 text-xs font-semibold bg-indigo-600 text-white rounded-xl"
+ className="px-4 py-2 text-xs font-medium bg-indigo-600 text-white rounded-xl"
  >
  Create Account
  </button>

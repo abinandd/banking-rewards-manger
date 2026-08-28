@@ -27,10 +27,10 @@ export const Header: React.FC<HeaderProps> = ({ currentTab, isAdmin }) => {
  return (
  <header className="bg-white h-16 flex items-center justify-between px-4 sm:px-6 lg:px-8 flex-shrink-0 z-10 relative">
  <div className="flex items-center space-x-4">
- <h2 className="text-lg font-semibold text-slate-900 tracking-tight">
+ <h2 className="text-lg font-medium text-slate-900 tracking-tight">
  {getTabName()}
  </h2>
- <div className="hidden sm:flex items-center space-x-2 text-xs font-medium uppercase tracking-wider text-slate-400 pl-4">
+ <div className="hidden sm:flex items-center space-x-2 text-xs font-normal uppercase tracking-wider text-slate-400 pl-4">
  {isAdmin ? 'Admin Console' : 'Customer View'}
  </div>
  </div>

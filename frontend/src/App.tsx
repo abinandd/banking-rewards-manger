@@ -248,7 +248,7 @@ export const App: React.FC = () => {
  <div className="min-h-screen bg-slate-900 flex items-center justify-center text-white">
  <div className="text-center space-y-3">
  <div className="h-10 w-10 -4 -transparent rounded-full animate-spin mx-auto"></div>
- <p className="text-sm font-medium tracking-wider text-slate-300">Connecting to VaultRewards...</p>
+ <p className="text-sm font-normal tracking-wider text-slate-300">Connecting to VaultRewards...</p>
  </div>
  </div>
  );
@@ -261,11 +261,11 @@ export const App: React.FC = () => {
  <div className="h-12 w-12 rounded-full bg-red-500/20 flex items-center justify-center mx-auto text-2xl">
  <AlertTriangle className="h-6 w-6 text-red-500"/>
  </div>
- <h2 className="text-xl font-semibold text-white">Connection Failed</h2>
+ <h2 className="text-xl font-medium text-white">Connection Failed</h2>
  <p className="text-sm text-slate-400">{error}</p>
  <button
  onClick={fetchData}
- className="px-6 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-medium rounded-xl transition"
+ className="px-6 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-normal rounded-xl transition"
  >
  Retry Connection
  </button>
@@ -294,7 +294,7 @@ export const App: React.FC = () => {
  <AlertTriangle className="h-5 w-5 text-red-500"/>
  </div>
  <div className="ml-3">
- <p className="text-sm text-red-700 font-medium">{error}</p>
+ <p className="text-sm text-red-700 font-normal">{error}</p>
  </div>
  <button
  onClick={() => setError(null)}
