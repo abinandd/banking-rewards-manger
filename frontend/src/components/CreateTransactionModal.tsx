@@ -113,7 +113,7 @@ export const CreateTransactionModal: React.FC<CreateTransactionModalProps> = ({
  <input
  type="text"
  required
- className="w-full px-4 py-2.5 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 text-sm"
+ className="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 text-sm transition-colors"
  value={merchantName}
  onChange={(e) => setMerchantName(e.target.value)}
  placeholder="e.g. Amazon, Swiggy"
@@ -126,7 +126,7 @@ export const CreateTransactionModal: React.FC<CreateTransactionModalProps> = ({
  Category
  </label>
  <select
- className="w-full px-3 py-2.5 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 text-sm font-normal bg-white"
+ className="w-full px-3 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 text-sm font-normal bg-white transition-colors"
  value={category}
  onChange={(e) => setCategory(e.target.value)}
  >
@@ -149,7 +149,7 @@ export const CreateTransactionModal: React.FC<CreateTransactionModalProps> = ({
  step="0.01"
  min="1"
  required
- className="w-full px-4 py-2.5 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 text-sm font-medium"
+ className="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 text-sm font-medium transition-colors"
  value={amount}
  onChange={(e) => setAmount(e.target.value)}
  placeholder="2000"
@@ -163,7 +163,7 @@ export const CreateTransactionModal: React.FC<CreateTransactionModalProps> = ({
  </label>
  <input
  type="text"
- className="w-full px-4 py-2.5 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 text-sm"
+ className="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 text-sm transition-colors"
  value={description}
  onChange={(e) => setDescription(e.target.value)}
  placeholder="e.g. Sony Headphones"

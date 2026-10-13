@@ -43,7 +43,7 @@ export const Header: React.FC<HeaderProps> = ({ currentTab, isAdmin }) => {
  <input
  type="text"
  placeholder="Search..."
- className="pl-10 pr-4 py-1.5 w-64 text-sm bg-slate-50 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus: transition-all"
+ className="pl-10 pr-4 py-1.5 w-64 text-sm bg-slate-50 border border-slate-200/80 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 focus:bg-white transition-all"
  />
  </div>
 

@@ -444,7 +444,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
  <div>
  <label className="font-medium text-slate-700 block mb-1">Category</label>
  <select
- className="w-full p-2.5 rounded-xl"
+ className="w-full p-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 bg-white"
  value={newRule.category}
  onChange={(e) => setNewRule({ ...newRule, category: e.target.value })}
  >
@@ -461,7 +461,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
  <label className="font-medium text-slate-700 block mb-1">Merchant Partner</label>
  <input
  type="text"
- className="w-full p-2.5 rounded-xl"
+ className="w-full p-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500"
  value={newRule.merchant}
  onChange={(e) => setNewRule({ ...newRule, merchant: e.target.value })}
  placeholder="e.g. Amazon or ALL"
@@ -474,7 +474,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
  <input
  type="number"
  step="0.1"
- className="w-full p-2.5 rounded-xl font-medium"
+ className="w-full p-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 font-medium"
  value={newRule.rewardValue}
  onChange={(e) => setNewRule({ ...newRule, rewardValue: Number(e.target.value) })}
  />
@@ -483,7 +483,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
  <label className="font-medium text-slate-700 block mb-1">Max Cap (₹)</label>
  <input
  type="number"
- className="w-full p-2.5 rounded-xl font-medium"
+ className="w-full p-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 font-medium"
  value={newRule.maxReward || ''}
  onChange={(e) => setNewRule({ ...newRule, maxReward: Number(e.target.value) })}
  placeholder="200"
@@ -523,9 +523,10 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
  <label className="font-medium text-slate-700 block mb-1">Campaign Name</label>
  <input
  type="text"
- className="w-full p-2.5 rounded-xl"
+ className="w-full p-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500"
  value={newCampaign.name}
  onChange={(e) => setNewCampaign({ ...newCampaign, name: e.target.value })}
+ placeholder="e.g. Weekend Dining Booster"
  />
  </div>
 
@@ -533,9 +534,10 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
  <label className="font-medium text-slate-700 block mb-1">Description</label>
  <input
  type="text"
- className="w-full p-2.5 rounded-xl"
+ className="w-full p-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500"
  value={newCampaign.description}
  onChange={(e) => setNewCampaign({ ...newCampaign, description: e.target.value })}
+ placeholder="e.g. Extra 4% cashback on dining"
  />
  </div>
 
@@ -543,7 +545,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
  <div>
  <label className="font-medium text-slate-700 block mb-1">Category</label>
  <select
- className="w-full p-2.5 rounded-xl"
+ className="w-full p-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 bg-white"
  value={newCampaign.category}
  onChange={(e) => setNewCampaign({ ...newCampaign, category: e.target.value })}
  >
@@ -559,7 +561,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
  <input
  type="number"
  step="0.5"
- className="w-full p-2.5 rounded-xl font-medium"
+ className="w-full p-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 font-medium"
  value={newCampaign.bonusPercentage}
  onChange={(e) => setNewCampaign({ ...newCampaign, bonusPercentage: Number(e.target.value) })}
  />
@@ -598,7 +600,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
  <label className="font-medium text-slate-700 block mb-1">Full Name</label>
  <input
  type="text"
- className="w-full p-2.5 rounded-xl"
+ className="w-full p-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500"
  value={userName}
  onChange={(e) => setUserName(e.target.value)}
  placeholder="e.g. Vikram Malhotra"
@@ -609,7 +611,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
  <label className="font-medium text-slate-700 block mb-1">Email Address</label>
  <input
  type="email"
- className="w-full p-2.5 rounded-xl"
+ className="w-full p-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500"
  value={userEmail}
  onChange={(e) => setUserEmail(e.target.value)}
  placeholder="vikram@example.com"
@@ -619,7 +621,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
  <div>
  <label className="font-medium text-slate-700 block mb-1">Loyalty Tier</label>
  <select
- className="w-full p-2.5 rounded-xl font-medium"
+ className="w-full p-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 font-medium bg-white"
  value={userTier}
  onChange={(e) => setUserTier(e.target.value)}
  >

@@ -114,7 +114,7 @@ export const TransactionDetailModal: React.FC<TransactionDetailModalProps> = ({
  {breakdowns.length > 0 ? (
  <div className="bg-slate-50 rounded-2xl p-4 space-y-3">
  {breakdowns.map((b, idx) => (
- <div key={idx} className="flex items-start justify-between text-xs pb-2 last:-0 last:pb-0">
+ <div key={idx} className="flex items-start justify-between text-xs pb-2 border-b border-slate-200/60 last:border-b-0 last:pb-0">
  <div>
  <div className="font-medium text-slate-800">{b.ruleName}</div>
  <div className="text-slate-500 text-[11px]">{b.description}</div>

@@ -92,7 +92,7 @@ export const TierPage: React.FC<TierPageProps> = ({ user, wallet, onUpgradeTier 
  </p>
  </div>
 
- <div className="bg-white/5 backdrop-blur-md p-5 rounded-2xl -white/10 w-full md:w-80">
+ <div className="bg-white/5 backdrop-blur-md p-5 rounded-2xl border border-white/10 w-full md:w-80">
  <div className="flex justify-between text-xs font-medium text-slate-300 mb-2">
  <span>Tier Progress</span>
  <span>{currentPoints} / {targetPoints} PTS</span>
@@ -117,10 +117,10 @@ export const TierPage: React.FC<TierPageProps> = ({ user, wallet, onUpgradeTier 
  return (
  <div
  key={t.name}
- className={`rounded-3xl p-6 transition flex flex-col justify-between ${
+ className={`rounded-3xl p-6 transition-all duration-200 flex flex-col justify-between ${
  isCurrent
- ? 'bg-white -2 '
- : 'bg-white '
+ ? 'bg-white border-2 border-emerald-500 shadow-sm ring-4 ring-emerald-500/10'
+ : 'bg-white border border-slate-100 shadow-sm hover:border-slate-200'
  }`}
  >
  <div>

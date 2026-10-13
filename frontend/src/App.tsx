@@ -247,7 +247,7 @@ export const App: React.FC = () => {
  return (
  <div className="min-h-screen bg-slate-900 flex items-center justify-center text-white">
  <div className="text-center space-y-3">
- <div className="h-10 w-10 -4 -transparent rounded-full animate-spin mx-auto"></div>
+ <div className="h-10 w-10 border-4 border-emerald-500 border-t-transparent rounded-full animate-spin mx-auto"></div>
  <p className="text-sm font-normal tracking-wider text-slate-300">Connecting to VaultRewards...</p>
  </div>
  </div>
@@ -291,7 +291,7 @@ export const App: React.FC = () => {
 
  <div className="flex-1 flex flex-col overflow-hidden relative">
  {error && (
- <div className="bg-red-50 -4 p-4 m-4 sm:mx-6 lg:mx-8 rounded relative flex-shrink-0 z-10">
+ <div className="bg-red-50 border-l-4 border-red-500 p-4 m-4 sm:mx-6 lg:mx-8 rounded-xl shadow-sm relative flex-shrink-0 z-10">
  <div className="flex">
  <div className="flex-shrink-0">
  <AlertTriangle className="h-5 w-5 text-red-500"/>

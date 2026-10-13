@@ -73,7 +73,7 @@ export const ReferralPage: React.FC<ReferralPageProps> = ({
  <Gift className="h-5 w-5"/>
  <span className="text-xs font-medium uppercase tracking-wider">Your Referral Code</span>
  </div>
- <div className="text-3xl sm:text-4xl font-bold mt-2 tracking-widest bg-white/10 px-4 py-2 rounded-2xl -white/20 inline-block">
+ <div className="text-3xl sm:text-4xl font-bold mt-2 tracking-widest bg-white/10 px-4 py-2 rounded-2xl border border-white/20 inline-block">
  {user.referralCode || 'REWARD500ABC'}
  </div>
  <p className="text-xs text-emerald-100 mt-2">
@@ -110,7 +110,7 @@ export const ReferralPage: React.FC<ReferralPageProps> = ({
  <input
  type="text"
  required
- className="w-full px-3.5 py-2 text-sm rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500"
+ className="w-full px-3.5 py-2 text-sm rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-colors"
  value={friendName}
  onChange={(e) => setFriendName(e.target.value)}
  placeholder="e.g. Rahul Verma"
@@ -124,7 +124,7 @@ export const ReferralPage: React.FC<ReferralPageProps> = ({
  <input
  type="email"
  required
- className="w-full px-3.5 py-2 text-sm rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500"
+ className="w-full px-3.5 py-2 text-sm rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-colors"
  value={friendEmail}
  onChange={(e) => setFriendEmail(e.target.value)}
  placeholder="rahul@example.com"
