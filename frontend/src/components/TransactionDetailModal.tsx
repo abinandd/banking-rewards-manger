@@ -32,9 +32,10 @@ export const TransactionDetailModal: React.FC<TransactionDetailModalProps> = ({
 
  // Parse breakdown JSON
  let breakdowns: RewardRuleBreakdown[] = [];
- if (cashbackReward?.breakdownJson) {
+ const rawBreakdown = cashbackReward?.breakdownJson || pointsReward?.breakdownJson;
+ if (rawBreakdown) {
  try {
- breakdowns = JSON.parse(cashbackReward.breakdownJson);
+ breakdowns = JSON.parse(rawBreakdown);
  } catch (e) {
  console.error(e);
  }
@@ -46,8 +47,8 @@ export const TransactionDetailModal: React.FC<TransactionDetailModalProps> = ({
  try {
  setLoadingRefund(true);
  await onRefund(transaction.id);
- } catch (err: any) {
- alert(err?.response?.data?.message || 'Failed to refund transaction');
+ } catch (err) {
+ alert((err as Error).message || 'Failed to refund transaction');
  } finally {
  setLoadingRefund(false);
  }

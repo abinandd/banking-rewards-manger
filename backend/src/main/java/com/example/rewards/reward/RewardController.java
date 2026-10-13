@@ -22,6 +22,7 @@ public class RewardController {
 
     private final RewardService rewardService;
     private final WalletService walletService;
+    private final ActiveRuleProvider activeRuleProvider;
 
     @Operation(summary = "Get user rewards ledger", description = "Fetch audit reward records and breakdown for a given customer")
     @ApiResponse(responseCode = "200", description = "User rewards list")
@@ -44,10 +45,13 @@ public class RewardController {
         return ResponseEntity.ok(rewardService.getAllRewards());
     }
 
-    @Operation(summary = "List reward rules", description = "Fetch all configurable business reward rules")
+    @Operation(summary = "List reward rules", description = "Fetch all configurable business reward rules or filter active rules only")
     @ApiResponse(responseCode = "200", description = "List of reward rules")
     @GetMapping("/rewards/rules")
-    public ResponseEntity<List<RewardRuleEntity>> getAllRules() {
+    public ResponseEntity<List<RewardRuleEntity>> getAllRules(@RequestParam(required = false, defaultValue = "false") boolean activeOnly) {
+        if (activeOnly) {
+            return ResponseEntity.ok(activeRuleProvider.getActiveRules());
+        }
         return ResponseEntity.ok(rewardService.getAllRules());
     }
 

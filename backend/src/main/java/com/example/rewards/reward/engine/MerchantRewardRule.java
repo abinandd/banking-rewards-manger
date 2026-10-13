@@ -36,6 +36,12 @@ public class MerchantRewardRule implements RewardRule {
             if (rule.getMerchant() != null && !rule.getMerchant().equalsIgnoreCase("ALL")
                     && rule.getMerchant().trim().equalsIgnoreCase(merchant.trim())) {
 
+                boolean categoryMatch = rule.getCategory() == null || rule.getCategory().equalsIgnoreCase("ALL")
+                        || (transaction.getCategory() != null && rule.getCategory().equalsIgnoreCase(transaction.getCategory()));
+                if (!categoryMatch) {
+                    continue;
+                }
+
                 if (rule.getMinSpend() != null && transaction.getAmount().compareTo(rule.getMinSpend()) < 0) {
                     continue;
                 }

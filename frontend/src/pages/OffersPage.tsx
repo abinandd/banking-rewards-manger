@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import { Tag, Calendar, Target, Plus, Zap, Percent, ShoppingBag, Flame, Clock, ArrowRight } from 'lucide-react';
+import { Plus, Flame, Clock, ArrowRight } from 'lucide-react';
 import { Campaign } from '../types';
 
 interface OffersPageProps {

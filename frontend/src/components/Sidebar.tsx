@@ -3,7 +3,6 @@ import {
  LayoutDashboard,
  Wallet,
  ArrowLeftRight,
- Sparkles,
  Award,
  Users,
  Sliders,

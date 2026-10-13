@@ -20,10 +20,10 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
-      - name: Build Backend JAR Artifact
+      - name: Build & Test Backend JAR Artifact
         run: |
           cd backend
-          mvn clean package -DskipTests
+          mvn clean verify
 
   frontend-build:
     name: Frontend Lint & Production Build

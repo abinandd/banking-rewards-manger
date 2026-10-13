@@ -22,7 +22,7 @@ RUN addgroup -S appgroup && adduser -S appuser -G appgroup
 USER appuser:appgroup
 
 # Copy built artifact
-COPY --from=builder --chown=appuser:appgroup /build/target/banking-rewards-manager-*.jar /app/app.jar
+COPY --from=builder --chown=appuser:appgroup /build/target/vault-rewards-engine-*.jar /app/app.jar
 
 # JVM Performance & Container Memory Tuning
 ENV JAVA_OPTS="-XX:+UseContainerSupport -XX:MaxRAMPercentage=75.0 -XX:+ExitOnOutOfMemoryError"

@@ -145,8 +145,7 @@ public class RewardService {
         return reversals;
     }
 
-    // Rules CRUD for Admin
-    @Cacheable(value = CacheConfig.ACTIVE_RULES_CACHE)
+    // Rules CRUD for Admin - direct fetch to prevent cache collision with ActiveRuleProvider
     public List<RewardRuleEntity> getAllRules() {
         return rewardRuleRepository.findAll();
     }

@@ -56,8 +56,8 @@ export const TierPage: React.FC<TierPageProps> = ({ user, wallet, onUpgradeTier 
  try {
  setLoading(true);
  await onUpgradeTier(tier);
- } catch (err: any) {
- alert(err?.response?.data?.message || 'Failed to update tier');
+ } catch (err) {
+ alert((err as Error).message || 'Failed to update tier');
  } finally {
  setLoading(false);
  }

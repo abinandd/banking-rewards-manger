@@ -17,6 +17,7 @@ interface CustomerDashboardProps {
  wallet: RewardWallet | null;
  transactions: Transaction[];
  rewards: Reward[];
+ currentTab?: string;
  onOpenCreateTxn: () => void;
  onSelectTab: (tab: string) => void;
  onSelectTxn: (txn: Transaction) => void;
@@ -27,6 +28,7 @@ export const CustomerDashboard: React.FC<CustomerDashboardProps> = ({
  wallet,
  transactions,
  rewards,
+ currentTab,
  onOpenCreateTxn,
  onSelectTab,
  onSelectTxn,
@@ -55,7 +57,8 @@ export const CustomerDashboard: React.FC<CustomerDashboardProps> = ({
  .filter(r => r.type === 'CASHBACK' && r.status === 'CREDITED')
  .reduce((acc, r) => acc + Number(r.amount), 0);
 
- const recentTransactions = transactions.slice(0, 5);
+ const isTransactionsTab = currentTab === 'transactions';
+ const displayedTransactions = isTransactionsTab ? transactions : transactions.slice(0, 5);
 
  return (
  <div ref={containerRef} className="space-y-6">
@@ -197,9 +200,14 @@ export const CustomerDashboard: React.FC<CustomerDashboardProps> = ({
  <div className="bg-white rounded-3xl overflow-hidden gsap-fade-up">
  <div className="p-6 flex items-center justify-between">
  <div>
- <h2 className="text-lg font-medium text-slate-900">Recent Transactions &amp; Audit Trail</h2>
- <p className="text-xs text-slate-500">Click any transaction to inspect exact multi-rule calculations or trigger a refund reversal</p>
+ <h2 className="text-lg font-medium text-slate-900">
+ {isTransactionsTab ? 'All Transactions & Audit Trail' : 'Recent Transactions & Audit Trail'}
+ </h2>
+ <p className="text-xs text-slate-500">
+ {isTransactionsTab ? 'Full transaction history with multi-rule cashback evaluation and 1-click refund reversals' : 'Click any transaction to inspect exact multi-rule calculations or trigger a refund reversal'}
+ </p>
  </div>
+ {!isTransactionsTab && (
  <button
  onClick={() => onSelectTab('transactions')}
  className="text-xs font-medium text-emerald-600 hover:text-emerald-700 flex items-center space-x-1"
@@ -207,15 +215,16 @@ export const CustomerDashboard: React.FC<CustomerDashboardProps> = ({
  <span>View All</span>
  <ArrowRight className="h-4 w-4"/>
  </button>
+ )}
  </div>
 
  <div className="divide-y divide-slate-100">
- {recentTransactions.length === 0 ? (
+ {displayedTransactions.length === 0 ? (
  <div className="p-8 text-center text-slate-400 text-sm">
  No transactions recorded yet. Make a purchase above to trigger the Reward Engine!
  </div>
  ) : (
- recentTransactions.map((txn) => {
+ displayedTransactions.map((txn) => {
  const matchedRewards = rewards.filter(r => r.transactionId === txn.id);
  const cashbackReward = matchedRewards.find(r => r.type === 'CASHBACK');
  const isRefunded = txn.status === 'REFUNDED';

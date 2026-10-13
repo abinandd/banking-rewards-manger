@@ -94,7 +94,6 @@ export const App: React.FC = () => {
  // Fetch initial data
  const fetchData = React.useCallback(async () => {
  try {
- setLoading(true);
  setError(null);
  const fetchedUsers = await UserService.getUsers();
  setUsers(fetchedUsers);
@@ -120,6 +119,7 @@ export const App: React.FC = () => {
  }, [fetchUserData]);
 
  useEffect(() => {
+ // eslint-disable-next-line react/set-state-in-effect
  fetchData();
  }, [fetchData]);
 
@@ -264,7 +264,10 @@ export const App: React.FC = () => {
  <h2 className="text-xl font-medium text-white">Connection Failed</h2>
  <p className="text-sm text-slate-400">{error}</p>
  <button
- onClick={fetchData}
+ onClick={() => {
+ setLoading(true);
+ fetchData();
+ }}
  className="px-6 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-normal rounded-xl transition"
  >
  Retry Connection
@@ -318,6 +321,7 @@ export const App: React.FC = () => {
  wallet={wallet}
  transactions={transactions}
  rewards={rewards}
+ currentTab={currentTab}
  onOpenCreateTxn={() => setShowCreateTxnModal(true)}
  onSelectTab={setCurrentTab}
  onSelectTxn={(t) => setSelectedTxn(t)}
